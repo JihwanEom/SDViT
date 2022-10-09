@@ -159,13 +159,44 @@ class ERM_ViT(Algorithm):
             weight_decay=self.hparams['weight_decay']
         )
 
+    @staticmethod
+    def rand_bbox(size, lam):
+        W = size[2]
+        H = size[3]
+        cut_rat = np.sqrt(1. - lam)
+        cut_w = np.int(W * cut_rat)
+        cut_h = np.int(H * cut_rat)
+
+        # uniform
+        cx = np.random.randint(W)
+        cy = np.random.randint(H)
+
+        bbx1 = np.clip(cx - cut_w // 2, 0, W)
+        bby1 = np.clip(cy - cut_h // 2, 0, H)
+        bbx2 = np.clip(cx + cut_w // 2, 0, W)
+        bby2 = np.clip(cy + cut_h // 2, 0, H)
+
+        return bbx1, bby1, bbx2, bby2
+
     def update(self, minibatches, unlabeled=None):
         all_x = torch.cat([x for x, y in minibatches])
         all_y = torch.cat([y for x, y in minibatches])
 
-        output = self.predict(all_x)
-
-        loss = F.cross_entropy(output, all_y)
+        beta = 1.0
+        if beta > 0 and np.random.rand(1) < 0.5:  # cutmix proba = 0.5
+            lam = np.random.beta(beta, beta)
+            rand_index = torch.randperm(all_x.size()[0]).cuda()
+            target_a = all_y
+            target_b = all_y[rand_index]
+            bbx1, bby1, bbx2, bby2 = self. rand_bbox(all_x.size(), lam)
+            all_x[:, :, bbx1:bbx2, bby1:bby2] = all_x[rand_index, :, bbx1:bbx2, bby1:bby2]
+            # adjust lambda to exactly match pixel ratio
+            lam = 1 - ((bbx2 - bbx1) * (bby2 - bby1) / (all_x.size()[-1] * all_x.size()[-2]))
+            output = self.predict(all_x)
+            loss = F.cross_entropy(output, target_a) * lam + F.cross_entropy(output, target_b) * (1. - lam)
+        else:
+            output = self.predict(all_x)
+            loss = F.cross_entropy(output, all_y)
 
         self.optimizer.zero_grad()
         loss.backward()
