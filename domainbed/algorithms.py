@@ -44,6 +44,7 @@ ALGORITHMS = [
     'ERM',
     'ERM_ViT',
     'ERM_SDViT',
+    'ERM_EMASDViT'
     'Fish',
     'IRM',
     'GroupDRO',
@@ -225,6 +226,40 @@ class ERM_SDViT(Algorithm):
         out = self.network(x)
         return out[-1]
 
+class ERM_EMASDViT(ERM_SDViT):
+    def __init__(self, input_shape, num_classes, num_domains, hparams):
+        super(ERM_SDViT, self).__init__(input_shape, num_classes, num_domains,
+                                               hparams)
+        self.alpha_rb_loss = self.hparams['RB_loss_weight']
+        self.alpha_KL_temp = self.hparams['KL_Div_Temperature']
+        self.ema_decay=0.999
+
+        # create model
+        backbone=self.hparams['backbone']
+        self.student = return_backbone_network(backbone,num_classes,hparams)
+        self.teacher = return_backbone_network(backbone,num_classes,hparams)
+
+        for t_param, s_param in zip(self.teacher.parameters(), self.student.parameters()):
+            t_param.data.copy_(s_param.data)
+        
+        self.optimizer = torch.optim.AdamW(self.student.parameters(),
+                                           lr=self.hparams["lr"],
+                                           weight_decay=self.hparams['weight_decay']
+                                           )
+
+    def _update_ema_variables(self):
+        for t_param, s_param in zip(self.teacher.parameters(), self.student.parameters()):
+            t_param.data.mul_(self.ema_decay).add_(1 - self.ema_decay, s_param.data)
+     
+    def predict_Train(self, x):
+        out = self.student(x)
+        block_number = random.randint(0, len(out) - 1)
+        self._update_ema_variables()
+        return out[-1], out[block_number]
+
+    def predict(self, x):
+        out = self.teacher(x)
+        return out[-1]
 
 class Fish(Algorithm):
     """
