@@ -49,8 +49,15 @@ def _hparams(algorithm, dataset, random_seed):
         _hparam('mlp_depth', 3, lambda r: int(r.choice([3, 4, 5])))
         _hparam('mlp_dropout', 0., lambda r: r.choice([0., 0.1, 0.5]))
 
+    elif algorithm == 'ERM_ViT':
+        _hparam('EMA', False, lambda r: False)
+        _hparam('EMA_decay', 0.999, lambda r: 0.999)
+        _hparam('CutMix', False, lambda r: False)
 
-    elif algorithm == 'ERM_SDViT' or algorithm =='ERM_EMASDViT':
+    elif algorithm == 'ERM_SDViT':
+        _hparam('EMA', False, lambda r: False)
+        _hparam('EMA_decay', 0.999, lambda r: 0.999)
+        _hparam('CutMix', False, lambda r: False)
         _hparam('RB_loss_weight', 0.5, lambda r: r.choice([0.5, 0.1, 0.2]))
         _hparam('KL_Div_Temperature', 3.0, lambda r: r.choice([3.0, 5.0]))
 

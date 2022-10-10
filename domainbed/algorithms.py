@@ -44,7 +44,6 @@ ALGORITHMS = [
     'ERM',
     'ERM_ViT',
     'ERM_SDViT',
-    'ERM_EMASDViT'
     'Fish',
     'IRM',
     'GroupDRO',
@@ -79,6 +78,24 @@ def get_algorithm_class(algorithm_name):
     if algorithm_name not in globals():
         raise NotImplementedError("Algorithm not found: {}".format(algorithm_name))
     return globals()[algorithm_name]
+
+def rand_bbox(size, lam):
+    W = size[2]
+    H = size[3]
+    cut_rat = np.sqrt(1. - lam)
+    cut_w = np.int(W * cut_rat)
+    cut_h = np.int(H * cut_rat)
+
+    # uniform
+    cx = np.random.randint(W)
+    cy = np.random.randint(H)
+
+    bbx1 = np.clip(cx - cut_w // 2, 0, W)
+    bby1 = np.clip(cy - cut_h // 2, 0, H)
+    bbx2 = np.clip(cx + cut_w // 2, 0, W)
+    bby2 = np.clip(cy + cut_h // 2, 0, H)
+
+    return bbx1, bby1, bbx2, bby2
 
 
 class Algorithm(torch.nn.Module):
@@ -149,53 +166,52 @@ class ERM_ViT(Algorithm):
         super(ERM_ViT, self).__init__(input_shape, num_classes, num_domains,
                                             hparams)
 
+        self.ema = self.hparams['EMA']
+        self.cutmix = self.hparams['CutMix']
+        if self.ema:
+            self.ema_decay = self.hparams['EMA_decay']
+        if self.cutmix:
+            self.beta = 1.0
+
         # create model
         backbone=self.hparams['backbone']
-        self.network = return_backbone_network(backbone,num_classes,hparams) 
+        self.student = return_backbone_network(backbone,num_classes,hparams) 
+        if self.ema:
+            self.teacher = return_backbone_network(backbone,num_classes,hparams)
+            for param in self.teacher.parameters():
+                param.requires_grad = False
+            self.teacher.eval()
+
+            for t_param, s_param in zip(self.teacher.parameters(), self.student.parameters()):
+                t_param.data.copy_(s_param.data)
 
         self.optimizer = torch.optim.AdamW(
-            self.network.parameters(),
+            self.student.parameters(),
             lr=self.hparams["lr"],
             weight_decay=self.hparams['weight_decay']
         )
 
-    @staticmethod
-    def rand_bbox(size, lam):
-        W = size[2]
-        H = size[3]
-        cut_rat = np.sqrt(1. - lam)
-        cut_w = np.int(W * cut_rat)
-        cut_h = np.int(H * cut_rat)
-
-        # uniform
-        cx = np.random.randint(W)
-        cy = np.random.randint(H)
-
-        bbx1 = np.clip(cx - cut_w // 2, 0, W)
-        bby1 = np.clip(cy - cut_h // 2, 0, H)
-        bbx2 = np.clip(cx + cut_w // 2, 0, W)
-        bby2 = np.clip(cy + cut_h // 2, 0, H)
-
-        return bbx1, bby1, bbx2, bby2
+    def _update_ema_variables(self):
+        for t_param, s_param in zip(self.teacher.parameters(), self.student.parameters()):
+            t_param.data.mul_(self.ema_decay).add_(1 - self.ema_decay, s_param.data)
 
     def update(self, minibatches, unlabeled=None):
         all_x = torch.cat([x for x, y in minibatches])
         all_y = torch.cat([y for x, y in minibatches])
 
-        beta = 1.0
-        if beta > 0 and np.random.rand(1) < 0.5:  # cutmix proba = 0.5
-            lam = np.random.beta(beta, beta)
+        if self.cutmix and np.random.rand(1) < 0.5:  # cutmix proba = 0.5
+            lam = np.random.beta(self.beta, self.beta)
             rand_index = torch.randperm(all_x.size()[0]).cuda()
             target_a = all_y
             target_b = all_y[rand_index]
-            bbx1, bby1, bbx2, bby2 = self. rand_bbox(all_x.size(), lam)
+            bbx1, bby1, bbx2, bby2 = rand_bbox(all_x.size(), lam)
             all_x[:, :, bbx1:bbx2, bby1:bby2] = all_x[rand_index, :, bbx1:bbx2, bby1:bby2]
             # adjust lambda to exactly match pixel ratio
             lam = 1 - ((bbx2 - bbx1) * (bby2 - bby1) / (all_x.size()[-1] * all_x.size()[-2]))
-            output = self.predict(all_x)
+            output = self.predict_Train(all_x)
             loss = F.cross_entropy(output, target_a) * lam + F.cross_entropy(output, target_b) * (1. - lam)
         else:
-            output = self.predict(all_x)
+            output = self.predict_Train(all_x)
             loss = F.cross_entropy(output, all_y)
 
         self.optimizer.zero_grad()
@@ -204,8 +220,17 @@ class ERM_ViT(Algorithm):
 
         return {'loss': loss.item()}
 
+    def predict_Train(self, x):
+        out = self.student(x)
+        if self.ema:
+            self._update_ema_variables()
+        return out[-1]
+
     def predict(self, x):
-        out = self.network(x)
+        if self.ema:
+            out = self.teacher(x)
+        else:
+            out = self.student(x)
         return out[-1]
 
 class ERM_SDViT(Algorithm):
@@ -215,23 +240,53 @@ class ERM_SDViT(Algorithm):
                                                hparams)
         self.alpha_rb_loss = self.hparams['RB_loss_weight']
         self.alpha_KL_temp = self.hparams['KL_Div_Temperature']
+        self.ema = self.hparams['EMA']
+        if self.ema:
+            self.ema_decay = self.hparams['EMA_decay']
+        self.cutmix = self.hparams['CutMix']
+        if self.cutmix:
+            self.beta = 1.0
 
         # create model
         backbone=self.hparams['backbone']
-        self.network = return_backbone_network(backbone,num_classes,hparams) 
+        self.student = return_backbone_network(backbone,num_classes,hparams) 
+        if self.ema:
+            self.teacher = return_backbone_network(backbone,num_classes,hparams)
+            for param in self.teacher.parameters():
+                param.requires_grad = False
+            self.teacher.eval()
 
-        self.optimizer = torch.optim.AdamW(self.network.parameters(),
+            for t_param, s_param in zip(self.teacher.parameters(), self.student.parameters()):
+                t_param.data.copy_(s_param.data)
+
+        self.optimizer = torch.optim.AdamW(self.student.parameters(),
                                            lr=self.hparams["lr"],
                                            weight_decay=self.hparams['weight_decay']
                                            )
+
+    def _update_ema_variables(self):
+        for t_param, s_param in zip(self.teacher.parameters(), self.student.parameters()):
+            t_param.data.mul_(self.ema_decay).add_(1 - self.ema_decay, s_param.data)
 
     def update(self, minibatches, unlabeled=None):
         all_x = torch.cat([x for x, y in minibatches])
         all_y = torch.cat([y for x, y in minibatches])
 
-        output, output_rb = self.predict_Train(all_x)
+        if self.cutmix and np.random.rand(1) < 0.5:  # cutmix proba = 0.5
+            lam = np.random.beta(self.beta, self.beta)
+            rand_index = torch.randperm(all_x.size()[0]).cuda()
+            target_a = all_y
+            target_b = all_y[rand_index]
+            bbx1, bby1, bbx2, bby2 = rand_bbox(all_x.size(), lam)
+            all_x[:, :, bbx1:bbx2, bby1:bby2] = all_x[rand_index, :, bbx1:bbx2, bby1:bby2]
+            # adjust lambda to exactly match pixel ratio
+            lam = 1 - ((bbx2 - bbx1) * (bby2 - bby1) / (all_x.size()[-1] * all_x.size()[-2]))
+            output, output_rb = self.predict_Train(all_x)
+            base_loss = F.cross_entropy(output, target_a) * lam + F.cross_entropy(output, target_b) * (1. - lam)
+        else:
+            output, output_rb = self.predict_Train(all_x)
+            base_loss = F.cross_entropy(output, all_y)
 
-        base_loss = F.cross_entropy(output, all_y)
         rb_loss = F.kl_div(
             F.log_softmax(output_rb / self.alpha_KL_temp, dim=1),
             F.log_softmax(output / self.alpha_KL_temp, dim=1),
@@ -249,47 +304,17 @@ class ERM_SDViT(Algorithm):
         return {'loss': loss.item()}
 
     def predict_Train(self, x):
-        out = self.network(x)
-        block_number = random.randint(0, len(out) - 1)
-        return out[-1], out[block_number]
-
-    def predict(self, x):
-        out = self.network(x)
-        return out[-1]
-
-class ERM_EMASDViT(ERM_SDViT):
-    def __init__(self, input_shape, num_classes, num_domains, hparams):
-        super(ERM_SDViT, self).__init__(input_shape, num_classes, num_domains,
-                                               hparams)
-        self.alpha_rb_loss = self.hparams['RB_loss_weight']
-        self.alpha_KL_temp = self.hparams['KL_Div_Temperature']
-        self.ema_decay=0.999
-
-        # create model
-        backbone=self.hparams['backbone']
-        self.student = return_backbone_network(backbone,num_classes,hparams)
-        self.teacher = return_backbone_network(backbone,num_classes,hparams)
-
-        for t_param, s_param in zip(self.teacher.parameters(), self.student.parameters()):
-            t_param.data.copy_(s_param.data)
-        
-        self.optimizer = torch.optim.AdamW(self.student.parameters(),
-                                           lr=self.hparams["lr"],
-                                           weight_decay=self.hparams['weight_decay']
-                                           )
-
-    def _update_ema_variables(self):
-        for t_param, s_param in zip(self.teacher.parameters(), self.student.parameters()):
-            t_param.data.mul_(self.ema_decay).add_(1 - self.ema_decay, s_param.data)
-     
-    def predict_Train(self, x):
         out = self.student(x)
         block_number = random.randint(0, len(out) - 1)
-        self._update_ema_variables()
+        if self.ema:
+            self._update_ema_variables()
         return out[-1], out[block_number]
 
     def predict(self, x):
-        out = self.teacher(x)
+        if self.ema:
+            out = self.teacher(x)
+        else:
+            out = self.student(x)
         return out[-1]
 
 class Fish(Algorithm):
