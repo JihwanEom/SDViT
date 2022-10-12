@@ -12,7 +12,7 @@ import tqdm
 
 from domainbed.lib.query import Q
 
-def load_records(path,test_post_results=False,get_recursively=False):
+def load_records(path,test_post_results=False,get_recursively=False, T3A=False):
     records = []
     if(get_recursively):
         filelist = []
@@ -23,6 +23,8 @@ def load_records(path,test_post_results=False,get_recursively=False):
                 filelist.append(os.path.join(root,file))
         if (test_post_results):
             results_ext = "results_test.jsonl"
+        elif T3A:
+            results_ext = "results_T3A.jsonl"
         else:
             results_ext = "results.jsonl"
         for name in filelist:

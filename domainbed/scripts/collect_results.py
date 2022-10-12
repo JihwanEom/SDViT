@@ -152,6 +152,7 @@ if __name__ == "__main__":
     parser.add_argument("--latex", action="store_true")
     parser.add_argument('--test_post_results', type=bool, default=False)
     parser.add_argument('--get_recursively',type=bool, default=False)
+    parser.add_argument('--T3A', action="store_true")
     args = parser.parse_args()
     if(args.test_post_results):
         results_file = "results_test.tex" if args.latex else "results_test.txt"
@@ -159,7 +160,7 @@ if __name__ == "__main__":
         results_file = "results.tex" if args.latex else "results.txt"
     sys.stdout = misc.Tee(os.path.join(args.input_dir, results_file), "w")
 
-    records = reporting.load_records(args.input_dir,test_post_results=args.test_post_results,get_recursively=args.get_recursively)
+    records = reporting.load_records(args.input_dir,test_post_results=args.test_post_results,get_recursively=args.get_recursively, T3A=args.T3A)
 
     if args.latex:
         print("\\documentclass{article}")
