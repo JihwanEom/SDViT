@@ -326,11 +326,14 @@ class VisionTransformer(nn.Module):
     def forward(self, x,return_feat=False):
         list_out = self.forward_features(x)
         features=list_out
-        x = [self.head(x) for x in list_out]
-        if(return_feat):
-            return x,features 
+        if hasattr(self, 'head'):
+            x = [self.head(x) for x in list_out]
+            if(return_feat):
+                return x,features
+            else:
+                return x
         else:
-            return x
+            return features
 
 
     def acc_for_blocks(self, x):
