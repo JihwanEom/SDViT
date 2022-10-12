@@ -305,9 +305,14 @@ if __name__ == "__main__":
     if use_featurer_cache:
         original_evals = zip(eval_loader_names, eval_loaders, eval_weights)
         loaders = []
-        classifier = copy.deepcopy(algorithm.student.head)
-        del algorithm.student.head
-        featurizer = algorithm.student
+        if hasattr(algorithm, 'teacher'):
+            classifier = copy.deepcopy(algorithm.teacher.head)
+            del algorithm.teacher.head
+            featurizer = algorithm.teacher
+        else:
+            classifier = copy.deepcopy(algorithm.student.head)
+            del algorithm.student.head
+            featurizer = algorithm.student
         for name, loader, weights in original_evals:
             loader1, loader2, ent = generate_featurelized_loader(loader, featurizer=featurizer, classifier=classifier, batch_size=32)
             loaders.append((name, loader1, weights))
