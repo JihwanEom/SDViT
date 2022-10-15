@@ -1,0 +1,129 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_SDViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: VLCS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0}
+	hparams_seed: 0
+	input_dir: logs/VLCS/ERM-SDViT/baseline/02185018c5b288e8b6d28c51809fcdf2
+	output_dir: logs/VLCS/ERM-SDViT/baseline/02185018c5b288e8b6d28c51809fcdf2
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 1150055444
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [2]
+	trial_seed: 0
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: False
+	EMA: False
+	EMA_decay: 0.999
+	KL_Div_Temperature: 3.0
+	RB_loss_weight: 0.5
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 296, in <module>
+    acc, ent = accuracy_ent(algorithm, loader, weights, device, adapt=None)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 94, in accuracy_ent
+    p = network.predict(x)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/algorithms.py", line 317, in predict
+    out = self.student(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 327, in forward
+    list_out = self.forward_features(x)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 320, in forward_features
+    x = blk(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 169, in forward
+    attn = self.attn(self.norm1(x))
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 131, in forward
+    x = self.proj(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 934, in __getattr__
+    def __getattr__(self, name: str) -> Union[Tensor, 'Module']:
+KeyboardInterrupt
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_SDViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: VLCS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0}
+	hparams_seed: 0
+	input_dir: logs/VLCS/ERM-SDViT/baseline/02185018c5b288e8b6d28c51809fcdf2
+	output_dir: logs/VLCS/ERM-SDViT/baseline/02185018c5b288e8b6d28c51809fcdf2
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 1150055444
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [2]
+	trial_seed: 0
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: False
+	EMA: False
+	EMA_decay: 0.999
+	KL_Div_Temperature: 3.0
+	RB_loss_weight: 0.5
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+1.0000000000  0.2014089170  0.9964664311  0.2056256486  0.9458823529  0.4019727527  0.7984934087  0.4927091958  0.7543792841  0.5998093282  0.7271341463  0.5993087001  0.9825990374  0.3475976734  0.8711111111  0.4612071518 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+1.0000000000  0.0002075598  1.0000000000  0.0003683564  0.8953598485  0.1573241581  0.7617187500  0.2039115396  0.7035060976  0.2942020969  0.7187500000  0.2559714526  0.9148065476  0.2230709282  0.8586309524  0.2238572889  1            
+1.0000000000  0.0000208367  1.0000000000  0.0000146260  0.9043560606  0.1056169547  0.7597656250  0.1198224495  0.7682926829  0.2218479187  0.7406250000  0.2120630533  0.9657738095  0.0711189959  0.8690476190  0.1195714350  5            
+1.0000000000  0.0000089599  1.0000000000  0.0000069683  0.9095643939  0.1053752641  0.7636718750  0.1054354510  0.7881097561  0.1946029338  0.7406250000  0.1874162290  0.9724702381  0.0543236318  0.8705357143  0.1076991826  20           
+1.0000000000  0.0000081319  1.0000000000  0.0000060121  0.9133522727  0.1053047872  0.7695312500  0.1077985531  0.7972560976  0.1808407612  0.7453125000  0.1745490395  0.9713541667  0.0518635665  0.8630952381  0.1039579674  50           
+1.0000000000  0.0000078694  1.0000000000  0.0000060044  0.9180871212  0.1043996772  0.7695312500  0.1200118903  0.7980182927  0.1731404016  0.7500000000  0.1773615059  0.9691220238  0.0531922511  0.8660714286  0.0955961560  100          
+1.0000000000  0.0000085556  1.0000000000  0.0000067429  0.9038825758  0.1151033054  0.7578125000  0.1510824487  0.8197408537  0.1682728771  0.7671875000  0.1679028627  0.9717261905  0.0482192184  0.8779761905  0.0899478096  -1           

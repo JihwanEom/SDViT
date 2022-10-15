@@ -1,0 +1,54 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_ViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: TerraIncognita
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"EMA":"True","CutMix":"True"}
+	hparams_seed: 0
+	input_dir: logs/TerraIncognita/ERM-ViT/EMA_CutMix/3dc2cddd7a10bbf526e8f49a8a0f8391
+	output_dir: logs/TerraIncognita/ERM-ViT/EMA_CutMix/3dc2cddd7a10bbf526e8f49a8a0f8391
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 546783313
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [2]
+	trial_seed: 0
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: True
+	EMA_decay: 0.999
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9883996836  0.0589769469  0.9683544304  0.0780563150  0.9623828476  0.1526304836  0.9440164355  0.1895539890  0.5664357683  0.5868838468  0.5692695214  0.6078764678  0.9462502656  0.2139122387  0.8775510204  0.2819643065 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9851694915  0.0262240734  0.9504310345  0.0403194763  0.9459876543  0.0662652628  0.9114583333  0.0941014456  0.5290404040  0.3264834322  0.5247395833  0.3302876366  0.9275085034  0.1358458359  0.8715277778  0.1551007390  1            
+0.9856991525  0.0206956596  0.9525862069  0.0324007969  0.9481738683  0.0604142277  0.9203125000  0.0956010329  0.5501893939  0.2899799117  0.5273437500  0.3035520744  0.9298469388  0.1104389344  0.8810763889  0.1315220262  5            
+0.9851694915  0.0186573276  0.9515086207  0.0290507038  0.9413580247  0.0694069871  0.9062500000  0.0995733146  0.5460858586  0.2774991371  0.5247395833  0.2666853080  0.9309098639  0.1048577116  0.8810763889  0.1227698829  20           
+0.9835805085  0.0189115931  0.9515086207  0.0253320968  0.9263117284  0.0820256473  0.9109375000  0.0975513428  0.5451388889  0.2697082942  0.5390625000  0.2331970728  0.9287840136  0.1036643596  0.8784722222  0.1143968805  50           
+0.9841101695  0.0186138002  0.9536637931  0.0244758425  0.9135802469  0.0814434749  0.9135416667  0.0956566101  0.5486111111  0.2408967921  0.5664062500  0.2207089709  0.9285714286  0.1011308570  0.8819444444  0.1113385558  100          
+0.9615995763  0.0297875262  0.9364224138  0.0353398368  0.9308127572  0.0475003733  0.9151041667  0.0511089098  0.5511363636  0.1588000546  0.5677083333  0.1674600118  0.9160289116  0.0924000820  0.8723958333  0.0982685883  -1           

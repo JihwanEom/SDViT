@@ -1,0 +1,56 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_SDViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: PACS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"CutMix":"True"}
+	hparams_seed: 0
+	input_dir: logs/PACS/ERM-SDViT/CutMix/d714f971546ded5c7561160244c4011b
+	output_dir: logs/PACS/ERM-SDViT/CutMix/d714f971546ded5c7561160244c4011b
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 1349518828
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [3]
+	trial_seed: 0
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: False
+	EMA_decay: 0.999
+	KL_Div_Temperature: 3.0
+	RB_loss_weight: 0.5
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9993898719  0.2011907187  0.9682151589  0.2402387377  1.0000000000  0.2009343951  0.9764957265  0.2295092981  1.0000000000  0.1766214085  0.9880239521  0.1961419975  0.7563613232  0.4529312287  0.7630573248  0.4739008108 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9993872549  0.0005939476  0.9635416667  0.0123202044  0.9989224138  0.0006726067  0.9732142857  0.0056608883  1.0000000000  0.0000769301  0.9875000000  0.0053659570  0.7525510204  0.0698739075  0.7617187500  0.0790940689  1            
+1.0000000000  0.0004842200  0.9635416667  0.0079749325  0.9989224138  0.0005547281  0.9732142857  0.0052262078  1.0000000000  0.0000160047  0.9875000000  0.0051046603  0.7586096939  0.0662617089  0.7643229167  0.0784112515  5            
+1.0000000000  0.0004983675  0.9635416667  0.0077946217  0.9989224138  0.0005454260  0.9754464286  0.0046670289  1.0000000000  0.0000139703  0.9875000000  0.0040840392  0.7627551020  0.0656459732  0.7825520833  0.0772523022  20           
+0.9993872549  0.0004946838  0.9635416667  0.0070486272  0.9989224138  0.0005292690  0.9754464286  0.0045671321  1.0000000000  0.0000131694  0.9875000000  0.0037431344  0.7646683673  0.0680751577  0.7838541667  0.0806068789  50           
+0.9993872549  0.0004918546  0.9635416667  0.0073083408  0.9989224138  0.0005073255  0.9754464286  0.0044572778  1.0000000000  0.0000128454  0.9875000000  0.0037490680  0.7653061224  0.0716754200  0.7799479167  0.0829463076  100          
+0.9993872549  0.0004914601  0.9635416667  0.0077492034  0.9989224138  0.0005492373  0.9732142857  0.0048246787  1.0000000000  0.0000135259  0.9875000000  0.0043080301  0.7490433673  0.0779153726  0.7630208333  0.0854577574  -1           

@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 296, in <module>
+    acc, ent = accuracy_ent(algorithm, loader, weights, device, adapt=None)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 94, in accuracy_ent
+    p = network.predict(x)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/algorithms.py", line 317, in predict
+    out = self.student(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 327, in forward
+    list_out = self.forward_features(x)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 320, in forward_features
+    x = blk(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 169, in forward
+    attn = self.attn(self.norm1(x))
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 131, in forward
+    x = self.proj(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 934, in __getattr__
+    def __getattr__(self, name: str) -> Union[Tensor, 'Module']:
+KeyboardInterrupt

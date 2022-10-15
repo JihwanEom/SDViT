@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\begin{document}
+\section{Full DomainBed results}
+% Total records: 72
+
+\subsection{Model selection: training-domain validation set}
+test_env: 1
+{'val_acc': 0.9000496031746031, 'test_acc': 0.6695075757575758}
+test_env: 0
+{'val_acc': 0.8296502976190476, 'test_acc': 0.9883928571428572}
+test_env: 1
+{'val_acc': 0.9042906746031746, 'test_acc': 0.6524621212121212}
+test_env: 2
+{'val_acc': 0.8839285714285715, 'test_acc': 0.7686737804878049}
+test_env: 3
+{'val_acc': 0.8748697916666667, 'test_acc': 0.7868303571428571}
+test_env: 3
+{'val_acc': 0.8712239583333333, 'test_acc': 0.7912946428571429}
+test_env: 1
+{'val_acc': 0.9098090277777778, 'test_acc': 0.6576704545454546}
+test_env: 0
+{'val_acc': 0.8222904265873016, 'test_acc': 0.9892857142857143}
+test_env: 2
+{'val_acc': 0.8758060515873015, 'test_acc': 0.774390243902439}
+test_env: 3
+{'val_acc': 0.8696614583333333, 'test_acc': 0.7715773809523809}
+test_env: 0
+{'val_acc': 0.8229042658730159, 'test_acc': 0.99375}
+test_env: 2
+{'val_acc': 0.8849516369047619, 'test_acc': 0.7488567073170732}
+
+\subsubsection{VLCS}
+[0.9883928571428572, 0.9892857142857143, 0.99375]
+[0.6695075757575758, 0.6524621212121212, 0.6576704545454546]
+[0.7686737804878049, 0.774390243902439, 0.7488567073170732]
+[0.7868303571428571, 0.7912946428571429, 0.7715773809523809]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Algorithm}   & \textbf{C}           & \textbf{L}           & \textbf{S}           & \textbf{V}           & \textbf{Avg}         \\
+\midrule
+ERM_ViT              & 99.0 $\pm$ 0.1       & 66.0 $\pm$ 0.4       & 76.4 $\pm$ 0.6       & 78.3 $\pm$ 0.5       & 79.9                 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\subsubsection{Averages}
+[0.8044672140613451, 0.7980449365167352, 0.7956608083227749]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lcc}
+\toprule
+\textbf{Algorithm}        & \textbf{VLCS}             & \textbf{Avg}              \\
+\midrule
+ERM_ViT                   & 79.9 $\pm$ 0.2            & 79.9                      \\
+\bottomrule
+\end{tabular}}
+\end{center}
+\end{document}

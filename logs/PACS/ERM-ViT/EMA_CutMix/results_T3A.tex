@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\begin{document}
+\section{Full DomainBed results}
+% Total records: 72
+
+\subsection{Model selection: training-domain validation set}
+test_env: 1
+{'val_acc': 0.9799479166666667, 'test_acc': 0.8529094827586207}
+test_env: 0
+{'val_acc': 0.985515873015873, 'test_acc': 0.8805147058823529}
+test_env: 1
+{'val_acc': 0.9865451388888888, 'test_acc': 0.8415948275862069}
+test_env: 0
+{'val_acc': 0.9882316468253968, 'test_acc': 0.8890931372549019}
+test_env: 3
+{'val_acc': 0.9837549603174603, 'test_acc': 0.8038903061224489}
+test_env: 0
+{'val_acc': 0.9801587301587302, 'test_acc': 0.8878676470588235}
+test_env: 2
+{'val_acc': 0.9696800595238096, 'test_acc': 0.993140243902439}
+test_env: 2
+{'val_acc': 0.9790426587301587, 'test_acc': 0.9908536585365854}
+test_env: 1
+{'val_acc': 0.9723090277777778, 'test_acc': 0.8432112068965517}
+test_env: 2
+{'val_acc': 0.9753224206349206, 'test_acc': 0.9916158536585366}
+test_env: 3
+{'val_acc': 0.985515873015873, 'test_acc': 0.8070790816326531}
+test_env: 3
+{'val_acc': 0.9884672619047619, 'test_acc': 0.7908163265306123}
+
+\subsubsection{PACS}
+[0.8805147058823529, 0.8890931372549019, 0.8878676470588235]
+[0.8529094827586207, 0.8415948275862069, 0.8432112068965517]
+[0.993140243902439, 0.9908536585365854, 0.9916158536585366]
+[0.8038903061224489, 0.8070790816326531, 0.7908163265306123]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Algorithm}   & \textbf{A}           & \textbf{C}           & \textbf{P}           & \textbf{S}           & \textbf{Avg}         \\
+\midrule
+ERM_ViT              & 88.6 $\pm$ 0.2       & 84.6 $\pm$ 0.3       & 99.2 $\pm$ 0.1       & 80.1 $\pm$ 0.4       & 88.1                 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\subsubsection{Averages}
+[0.882839232202553, 0.8782800362575645, 0.8820273509950658]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lcc}
+\toprule
+\textbf{Algorithm}        & \textbf{PACS}             & \textbf{Avg}              \\
+\midrule
+ERM_ViT                   & 88.1 $\pm$ 0.1            & 88.1                      \\
+\bottomrule
+\end{tabular}}
+\end{center}
+\end{document}

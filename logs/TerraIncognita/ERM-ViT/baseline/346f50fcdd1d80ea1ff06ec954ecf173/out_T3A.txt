@@ -1,0 +1,54 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_ViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: TerraIncognita
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0}
+	hparams_seed: 0
+	input_dir: logs/TerraIncognita/ERM-ViT/baseline/346f50fcdd1d80ea1ff06ec954ecf173
+	output_dir: logs/TerraIncognita/ERM-ViT/baseline/346f50fcdd1d80ea1ff06ec954ecf173
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 546783313
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [2]
+	trial_seed: 0
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: False
+	EMA: False
+	EMA_decay: 0.999
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9873451094  0.0460874789  0.9630801688  0.0608872503  0.9617409167  0.1255389895  0.9219311762  0.1528588039  0.4965365239  0.5228796839  0.5163727960  0.5603244371  0.9313787975  0.2243772081  0.8588435374  0.2815387468 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9838453390  0.0279519158  0.9482758621  0.0385209488  0.9501028807  0.0629454540  0.9062500000  0.0970499949  0.4472853535  0.3876647091  0.4309895833  0.3914286382  0.9183673469  0.1364718341  0.8628472222  0.1667015362  1            
+0.9833156780  0.0226479979  0.9525862069  0.0317307773  0.9508744856  0.0605545164  0.8973958333  0.0900317735  0.4592803030  0.3299537413  0.4322916667  0.3138465472  0.9241071429  0.1197136914  0.8680555556  0.1475561025  5            
+0.9830508475  0.0206990048  0.9439655172  0.0294191461  0.9459876543  0.0683245097  0.8880208333  0.0910619229  0.4577020202  0.2768166860  0.4583333333  0.2528340933  0.9249574830  0.1142685445  0.8697916667  0.1354870871  20           
+0.9827860169  0.0203931380  0.9471982759  0.0236080699  0.9261831276  0.0758386011  0.8729166667  0.0872063123  0.4614898990  0.2614650445  0.4817708333  0.2080286488  0.9243197279  0.1099076908  0.8767361111  0.1346219985  50           
+0.9822563559  0.0202870927  0.9482758621  0.0236559696  0.9009773663  0.0813142899  0.8765625000  0.0861567488  0.4696969697  0.2424396429  0.4973958333  0.2235269443  0.9219812925  0.1096855550  0.8715277778  0.1315804665  100          
+0.9594809322  0.0317474653  0.9278017241  0.0328743545  0.9304269547  0.0527793988  0.9031250000  0.0497735162  0.5044191919  0.1979994773  0.5234375000  0.1811846624  0.9096513605  0.1004417405  0.8680555556  0.1077603755  -1           

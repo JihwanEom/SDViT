@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 195, in <module>
+    dataset = vars(datasets)[args.dataset](args.data_dir,
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/datasets.py", line 257, in __init__
+    super().__init__(self.dir, test_envs, hparams['data_augmentation'], hparams)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/datasets.py", line 182, in __init__
+    environments = [f.name for f in os.scandir(root) if f.is_dir()]
+FileNotFoundError: [Errno 2] No such file or directory: './domainbed/data/PACS/'

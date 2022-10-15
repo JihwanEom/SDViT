@@ -1,0 +1,168 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_SDViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: PACS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"EMA":"True","CutMix":"True"}
+	hparams_seed: 0
+	input_dir: ./logs/PACS/ERM_SDViT_Deit-S/EMA_CutMix/0b1905926b9b8d4bcf74a94f9acbd93b
+	output_dir: ./logs/PACS/ERM_SDViT_Deit-S/EMA_CutMix/0b1905926b9b8d4bcf74a94f9acbd93b
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 944755678
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [2]
+	trial_seed: 2
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: True
+	EMA_decay: 0.999
+	KL_Div_Temperature: 3.0
+	RB_loss_weight: 0.5
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 195, in <module>
+    dataset = vars(datasets)[args.dataset](args.data_dir,
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/datasets.py", line 257, in __init__
+    super().__init__(self.dir, test_envs, hparams['data_augmentation'], hparams)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/datasets.py", line 182, in __init__
+    environments = [f.name for f in os.scandir(root) if f.is_dir()]
+FileNotFoundError: [Errno 2] No such file or directory: './domainbed/data/PACS/'
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_SDViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: PACS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"EMA":"True","CutMix":"True"}
+	hparams_seed: 0
+	input_dir: ./logs/PACS/ERM_SDViT_Deit-S/EMA_CutMix/0b1905926b9b8d4bcf74a94f9acbd93b
+	output_dir: ./logs/PACS/ERM_SDViT_Deit-S/EMA_CutMix/0b1905926b9b8d4bcf74a94f9acbd93b
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 944755678
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [2]
+	trial_seed: 2
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: True
+	EMA_decay: 0.999
+	KL_Div_Temperature: 3.0
+	RB_loss_weight: 0.5
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+1.0000000000  0.2677193011  0.9755501222  0.3032423430  0.9994669510  0.2646526670  0.9807692308  0.2955310630  0.9887724551  0.3143757271  0.9850299401  0.3283195353  0.9996819338  0.2655339888  0.9592356688  0.3087868508 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+1.0000000000  0.0003069400  0.9765625000  0.0138954009  1.0000000000  0.0005007636  0.9821428571  0.0097071808  0.9893292683  0.0071017593  0.9937500000  0.0092960054  0.9990433673  0.0007858354  0.9674479167  0.0102802981  1            
+1.0000000000  0.0000957088  0.9739583333  0.0094698981  1.0000000000  0.0001202849  0.9799107143  0.0098728204  0.9900914634  0.0067678382  0.9937500000  0.0080766185  0.9990433673  0.0005444192  0.9674479167  0.0086334906  5            
+1.0000000000  0.0000711695  0.9739583333  0.0079617457  1.0000000000  0.0000923857  0.9821428571  0.0086070241  0.9900914634  0.0061114795  0.9937500000  0.0064496133  0.9990433673  0.0005604265  0.9674479167  0.0073133263  20           
+1.0000000000  0.0000627406  0.9739583333  0.0060489211  1.0000000000  0.0000890717  0.9821428571  0.0078564083  0.9900914634  0.0056996849  0.9937500000  0.0065445176  0.9990433673  0.0005514509  0.9674479167  0.0066962000  50           
+1.0000000000  0.0000621157  0.9739583333  0.0060676735  1.0000000000  0.0000873971  0.9843750000  0.0078131650  0.9893292683  0.0055654123  0.9937500000  0.0065736364  0.9990433673  0.0005240123  0.9674479167  0.0068897467  100          
+1.0000000000  0.0000653992  0.9739583333  0.0084422279  1.0000000000  0.0000906930  0.9821428571  0.0097276432  0.9900914634  0.0064168220  0.9937500000  0.0071401622  0.9875637755  0.0206259446  0.9635416667  0.0123261080  -1           
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_SDViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: PACS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"EMA":"True","CutMix":"True"}
+	hparams_seed: 0
+	input_dir: logs/PACS/ERM-SDViT/EMA_CutMix/0b1905926b9b8d4bcf74a94f9acbd93b
+	output_dir: logs/PACS/ERM-SDViT/EMA_CutMix/0b1905926b9b8d4bcf74a94f9acbd93b
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 944755678
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [2]
+	trial_seed: 2
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: True
+	EMA_decay: 0.999
+	KL_Div_Temperature: 3.0
+	RB_loss_weight: 0.5
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+1.0000000000  0.2677193011  0.9755501222  0.3032423430  0.9994669510  0.2646526670  0.9807692308  0.2955310630  0.9887724551  0.3143757271  0.9850299401  0.3283195353  0.9996819338  0.2655339888  0.9592356688  0.3087868508 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+1.0000000000  0.0003069400  0.9765625000  0.0138954009  1.0000000000  0.0005007636  0.9821428571  0.0097071808  0.9893292683  0.0071017593  0.9937500000  0.0092960054  0.9990433673  0.0007858354  0.9674479167  0.0102802981  1            
+1.0000000000  0.0000957088  0.9739583333  0.0094698981  1.0000000000  0.0001202849  0.9799107143  0.0098728204  0.9900914634  0.0067678382  0.9937500000  0.0080766185  0.9990433673  0.0005444192  0.9674479167  0.0086334906  5            
+1.0000000000  0.0000711695  0.9739583333  0.0079617457  1.0000000000  0.0000923857  0.9821428571  0.0086070241  0.9900914634  0.0061114795  0.9937500000  0.0064496133  0.9990433673  0.0005604265  0.9674479167  0.0073133263  20           
+1.0000000000  0.0000627406  0.9739583333  0.0060489211  1.0000000000  0.0000890717  0.9821428571  0.0078564083  0.9900914634  0.0056996849  0.9937500000  0.0065445176  0.9990433673  0.0005514509  0.9674479167  0.0066962000  50           
+1.0000000000  0.0000621157  0.9739583333  0.0060676735  1.0000000000  0.0000873971  0.9843750000  0.0078131650  0.9893292683  0.0055654123  0.9937500000  0.0065736364  0.9990433673  0.0005240123  0.9674479167  0.0068897467  100          
+1.0000000000  0.0000653992  0.9739583333  0.0084422279  1.0000000000  0.0000906930  0.9821428571  0.0097276432  0.9900914634  0.0064168220  0.9937500000  0.0071401622  0.9875637755  0.0206259446  0.9635416667  0.0123261080  -1           

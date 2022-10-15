@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 317, in <module>
+    loader1, loader2, ent = generate_featurelized_loader(loader, featurizer=featurizer, classifier=classifier, batch_size=32)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 55, in generate_featurelized_loader
+    for x, y in loader:
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/lib/fast_data_loader.py", line 70, in __iter__
+    yield next(self._infinite_iterator)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 517, in __next__
+    data = self._next_data()
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1182, in _next_data
+    idx, data = self._get_data()
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1148, in _get_data
+    success, data = self._try_get_data()
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 986, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt

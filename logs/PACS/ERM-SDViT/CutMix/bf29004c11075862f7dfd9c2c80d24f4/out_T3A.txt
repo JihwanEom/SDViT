@@ -1,0 +1,56 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_SDViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: PACS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"CutMix":"True"}
+	hparams_seed: 0
+	input_dir: logs/PACS/ERM-SDViT/CutMix/bf29004c11075862f7dfd9c2c80d24f4
+	output_dir: logs/PACS/ERM-SDViT/CutMix/bf29004c11075862f7dfd9c2c80d24f4
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 377757251
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [3]
+	trial_seed: 2
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: False
+	EMA_decay: 0.999
+	KL_Div_Temperature: 3.0
+	RB_loss_weight: 0.5
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9993898719  0.2362886268  0.9657701711  0.2949062012  1.0000000000  0.2333493121  0.9722222222  0.2722073865  1.0000000000  0.2087317216  1.0000000000  0.2334448792  0.7573155216  0.5612472759  0.7617834395  0.5364081097 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9993872549  0.0008977857  0.9661458333  0.0160003070  1.0000000000  0.0001425877  0.9799107143  0.0079616909  1.0000000000  0.0000815375  0.9968750000  0.0060031622  0.7589285714  0.0944400223  0.7643229167  0.0977197437  1            
+0.9993872549  0.0006470953  0.9687500000  0.0138785460  1.0000000000  0.0001297182  0.9799107143  0.0081005815  1.0000000000  0.0000529997  0.9937500000  0.0051958036  0.7570153061  0.0893778092  0.7669270833  0.0958943803  5            
+0.9993872549  0.0006174782  0.9687500000  0.0121573194  1.0000000000  0.0001255298  0.9799107143  0.0078098136  1.0000000000  0.0000478915  0.9968750000  0.0069763162  0.7602040816  0.0880871895  0.7682291667  0.0851960859  20           
+0.9993872549  0.0005856100  0.9687500000  0.0110999165  1.0000000000  0.0001400601  0.9799107143  0.0078133717  1.0000000000  0.0000446503  0.9968750000  0.0069418908  0.7608418367  0.0902645521  0.7604166667  0.0880070558  50           
+0.9993872549  0.0005589222  0.9687500000  0.0112410448  1.0000000000  0.0001341603  0.9776785714  0.0077522580  1.0000000000  0.0000429300  0.9968750000  0.0069428072  0.7563775510  0.0937100623  0.7630208333  0.0928889601  100          
+0.9993872549  0.0005426361  0.9661458333  0.0178683837  1.0000000000  0.0001400087  0.9821428571  0.0078348006  1.0000000000  0.0000450484  0.9937500000  0.0068931361  0.7560586735  0.1038133381  0.7591145833  0.0985633990  -1           

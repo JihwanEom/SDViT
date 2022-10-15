@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\begin{document}
+\section{Full DomainBed results}
+% Total records: 216
+
+\subsection{Model selection: training-domain validation set}
+test_env: 3
+{'val_acc': 0.8702891563911946, 'test_acc': 0.7674935209181785}
+test_env: 1
+{'val_acc': 0.9133521529659742, 'test_acc': 0.672}
+test_env: 2
+{'val_acc': 0.8868215107763131, 'test_acc': 0.7543792840822544}
+test_env: 3
+{'val_acc': 0.8655830974347554, 'test_acc': 0.7856349500185117}
+test_env: 0
+{'val_acc': 0.8275115214428981, 'test_acc': 0.9717314487632509}
+test_env: 3
+{'val_acc': 0.8676575975897309, 'test_acc': 0.7900777489818586}
+test_env: 2
+{'val_acc': 0.8816511874314674, 'test_acc': 0.7524752475247525}
+test_env: 2
+{'val_acc': 0.8846704331450094, 'test_acc': 0.7707539984767707}
+test_env: 0
+{'val_acc': 0.8298802178228938, 'test_acc': 0.9434628975265018}
+test_env: 0
+{'val_acc': 0.8253776047647482, 'test_acc': 0.9664310954063604}
+test_env: 1
+{'val_acc': 0.9070400481782596, 'test_acc': 0.6489411764705882}
+test_env: 1
+{'val_acc': 0.9010712134899127, 'test_acc': 0.656}
+
+\subsubsection{VLCS}
+[0.9717314487632509, 0.9434628975265018, 0.9664310954063604]
+[0.672, 0.6489411764705882, 0.656]
+[0.7543792840822544, 0.7524752475247525, 0.7707539984767707]
+[0.7674935209181785, 0.7856349500185117, 0.7900777489818586]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Algorithm}   & \textbf{C}           & \textbf{L}           & \textbf{S}           & \textbf{V}           & \textbf{Avg}         \\
+\midrule
+ERM_SDViT            & 96.1 $\pm$ 0.7       & 65.9 $\pm$ 0.6       & 75.9 $\pm$ 0.5       & 78.1 $\pm$ 0.6       & 79.0                 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\subsubsection{Averages}
+[0.7803339256317338, 0.7952460229782428, 0.7942653934322803]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lcc}
+\toprule
+\textbf{Algorithm}        & \textbf{VLCS}             & \textbf{Avg}              \\
+\midrule
+ERM_SDViT                 & 79.0 $\pm$ 0.4            & 79.0                      \\
+\bottomrule
+\end{tabular}}
+\end{center}
+\end{document}

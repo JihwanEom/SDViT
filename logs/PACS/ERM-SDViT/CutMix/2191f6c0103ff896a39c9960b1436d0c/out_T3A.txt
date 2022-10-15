@@ -1,0 +1,56 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_SDViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: PACS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"CutMix":"True"}
+	hparams_seed: 0
+	input_dir: logs/PACS/ERM-SDViT/CutMix/2191f6c0103ff896a39c9960b1436d0c
+	output_dir: logs/PACS/ERM-SDViT/CutMix/2191f6c0103ff896a39c9960b1436d0c
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 1184535408
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [1]
+	trial_seed: 1
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: False
+	EMA_decay: 0.999
+	KL_Div_Temperature: 3.0
+	RB_loss_weight: 0.5
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+1.0000000000  0.2509545359  0.9682151589  0.3033427003  0.8123667377  0.4527619881  0.8055555556  0.4572920005  1.0000000000  0.2289587591  0.9970059880  0.2389920015  0.9987277354  0.2738501114  0.9770700637  0.3035751404 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9993872549  0.0013393314  0.9635416667  0.0134448505  0.8168103448  0.0694212173  0.8058035714  0.0854298119  1.0000000000  0.0002747962  0.9968750000  0.0004861288  0.9977678571  0.0046831009  0.9687500000  0.0139247038  1            
+0.9993872549  0.0007095495  0.9635416667  0.0115881345  0.8189655172  0.0635437777  0.8125000000  0.0715481582  1.0000000000  0.0000962569  0.9968750000  0.0002599221  0.9984056122  0.0018210544  0.9700520833  0.0124284158  5            
+0.9993872549  0.0007176269  0.9635416667  0.0112630806  0.8227370690  0.0634844506  0.8147321429  0.0660591127  1.0000000000  0.0000737925  0.9968750000  0.0001491503  0.9987244898  0.0016706729  0.9700520833  0.0121922912  20           
+1.0000000000  0.0007078709  0.9635416667  0.0093628587  0.8243534483  0.0636122437  0.8080357143  0.0647691009  1.0000000000  0.0000698111  0.9968750000  0.0001154520  0.9987244898  0.0016571901  0.9700520833  0.0119198496  50           
+1.0000000000  0.0006757168  0.9635416667  0.0095297776  0.8221982759  0.0624562696  0.8058035714  0.0678918710  1.0000000000  0.0000669903  0.9968750000  0.0001152481  0.9987244898  0.0017032312  0.9739583333  0.0111508435  100          
+1.0000000000  0.0006890064  0.9635416667  0.0107257996  0.8195043103  0.0592798808  0.8080357143  0.0704052686  1.0000000000  0.0000694206  0.9968750000  0.0001767658  0.9894770408  0.0176518777  0.9635416667  0.0257679587  -1           

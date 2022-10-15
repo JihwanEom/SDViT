@@ -1,0 +1,131 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_ViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: OfficeHome
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0}
+	hparams_seed: 0
+	input_dir: logs/OfficeHome/ERM-ViT/baseline/05eedac54051e8e5e84f6bb5a3583340
+	output_dir: logs/OfficeHome/ERM-ViT/baseline/05eedac54051e8e5e84f6bb5a3583340
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 1526041754
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [3]
+	trial_seed: 1
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: False
+	EMA: False
+	EMA_decay: 0.999
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9943357364  0.0767304436  0.8185567010  0.5013468713  0.9785223368  0.1389000944  0.8293241695  0.4225196117  0.9938063063  0.0846327629  0.9199549042  0.2453877359  0.8224325875  0.4418559144  0.8312284730  0.4496475777 
+
+After T3A
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 317, in <module>
+    loader1, loader2, ent = generate_featurelized_loader(loader, featurizer=featurizer, classifier=classifier, batch_size=32)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 55, in generate_featurelized_loader
+    for x, y in loader:
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/lib/fast_data_loader.py", line 70, in __iter__
+    yield next(self._infinite_iterator)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 517, in __next__
+    data = self._next_data()
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1182, in _next_data
+    idx, data = self._get_data()
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1148, in _get_data
+    success, data = self._try_get_data()
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 986, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_ViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: OfficeHome
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0}
+	hparams_seed: 0
+	input_dir: logs/OfficeHome/ERM-ViT/baseline/05eedac54051e8e5e84f6bb5a3583340
+	output_dir: logs/OfficeHome/ERM-ViT/baseline/05eedac54051e8e5e84f6bb5a3583340
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 1526041754
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [3]
+	trial_seed: 1
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: False
+	EMA: False
+	EMA_decay: 0.999
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9943357364  0.0767304436  0.8185567010  0.5013468713  0.9785223368  0.1389000944  0.8293241695  0.4225196117  0.9938063063  0.0846327629  0.9199549042  0.2453877359  0.8224325875  0.4418559144  0.8312284730  0.4496475777 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9890625000  0.0200953246  0.8020833333  0.1990403406  0.9690366972  0.0458360523  0.8055555556  0.1654714808  0.9893018018  0.0211254369  0.9039351852  0.0903045823  0.8217592593  0.1674866376  0.8310185185  0.1674294150  1            
+0.9937500000  0.0111650082  0.8125000000  0.0554887528  0.9707568807  0.0322446026  0.8159722222  0.1064978920  0.9904279279  0.0137449396  0.9131944444  0.0541457631  0.8292824074  0.1272421107  0.8356481481  0.0961028164  5            
+0.9937500000  0.0073895491  0.8125000000  0.0197481037  0.9741972477  0.0260994947  0.8229166667  0.0498143159  0.9904279279  0.0113242018  0.9108796296  0.0240868532  0.8284143519  0.1054534614  0.8333333333  0.0449021764  20           
+0.9942708333  0.0066645224  0.8125000000  0.0194519320  0.9753440367  0.0239471316  0.8217592593  0.0489114987  0.9904279279  0.0097968797  0.9120370370  0.0235985850  0.8272569444  0.0937849685  0.8333333333  0.0440873136  50           
+0.9942708333  0.0066622087  0.8125000000  0.0194519320  0.9756307339  0.0231562481  0.8217592593  0.0489114987  0.9904279279  0.0094163393  0.9120370370  0.0235985850  0.8275462963  0.0926814336  0.8333333333  0.0440873136  100          
+0.5822916667  1.1137525150  0.5729166667  0.8294152203  0.5427178899  1.0855596843  0.4988425926  0.8852812269  0.5289977477  1.1912274994  0.4884259259  1.0940195062  0.4401041667  1.2270671931  0.4710648148  1.0226906180  -1           

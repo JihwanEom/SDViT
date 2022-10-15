@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\begin{document}
+\section{Full DomainBed results}
+% Total records: 216
+
+\subsection{Model selection: training-domain validation set}
+test_env: 3
+{'val_acc': 0.8534774712415084, 'test_acc': 0.8267355134825014}
+test_env: 1
+{'val_acc': 0.8872587203765724, 'test_acc': 0.5581328751431844}
+test_env: 3
+{'val_acc': 0.8761920627725669, 'test_acc': 0.8270223752151463}
+test_env: 1
+{'val_acc': 0.8804708899732798, 'test_acc': 0.570446735395189}
+test_env: 2
+{'val_acc': 0.8533546909912504, 'test_acc': 0.807713963963964}
+test_env: 2
+{'val_acc': 0.8416049981829333, 'test_acc': 0.8184121621621622}
+test_env: 2
+{'val_acc': 0.8401461719510649, 'test_acc': 0.8150337837837838}
+test_env: 0
+{'val_acc': 0.8831008298764417, 'test_acc': 0.7028836251287333}
+test_env: 3
+{'val_acc': 0.8560035436126511, 'test_acc': 0.8296041308089501}
+test_env: 0
+{'val_acc': 0.8761271690529909, 'test_acc': 0.6967044284243048}
+test_env: 1
+{'val_acc': 0.8686781397876834, 'test_acc': 0.5641466208476518}
+test_env: 0
+{'val_acc': 0.8716062991304018, 'test_acc': 0.7054582904222451}
+
+\subsubsection{OfficeHome}
+[0.7028836251287333, 0.6967044284243048, 0.7054582904222451]
+[0.5581328751431844, 0.570446735395189, 0.5641466208476518]
+[0.807713963963964, 0.8184121621621622, 0.8150337837837838]
+[0.8267355134825014, 0.8270223752151463, 0.8296041308089501]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Algorithm}   & \textbf{A}           & \textbf{C}           & \textbf{P}           & \textbf{R}           & \textbf{Avg}         \\
+\midrule
+ERM_SDViT            & 70.2 $\pm$ 0.2       & 56.4 $\pm$ 0.3       & 81.4 $\pm$ 0.3       & 82.8 $\pm$ 0.1       & 72.7                 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\subsubsection{Averages}
+[0.7287918641976515, 0.7239382098627569, 0.7278435521340455]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lcc}
+\toprule
+\textbf{Algorithm}        & \textbf{OfficeHome}       & \textbf{Avg}              \\
+\midrule
+ERM_SDViT                 & 72.7 $\pm$ 0.1            & 72.7                      \\
+\bottomrule
+\end{tabular}}
+\end{center}
+\end{document}

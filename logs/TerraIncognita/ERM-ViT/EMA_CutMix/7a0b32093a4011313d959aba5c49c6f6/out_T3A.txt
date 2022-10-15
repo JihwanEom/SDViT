@@ -1,0 +1,54 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_ViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: TerraIncognita
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"EMA":"True","CutMix":"True"}
+	hparams_seed: 0
+	input_dir: logs/TerraIncognita/ERM-ViT/EMA_CutMix/7a0b32093a4011313d959aba5c49c6f6
+	output_dir: logs/TerraIncognita/ERM-ViT/EMA_CutMix/7a0b32093a4011313d959aba5c49c6f6
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 248749643
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [1]
+	trial_seed: 0
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: True
+	EMA_decay: 0.999
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9865541788  0.0654924540  0.9567510549  0.0876874643  0.3734754140  0.6075339508  0.3862352337  0.5893578199  0.9653652393  0.1424224288  0.9055415617  0.1993601004  0.9430635224  0.2233474445  0.8869047619  0.2901039724 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9766949153  0.0343782695  0.9536637931  0.0526827266  0.4444444444  0.2813608540  0.4510416667  0.2607007615  0.9393939394  0.1008992421  0.8763020833  0.1429566750  0.9090136054  0.1282858479  0.8446180556  0.1830702221  1            
+0.9838453390  0.0276484045  0.9515086207  0.0377047284  0.4304269547  0.2703844510  0.4401041667  0.2310904359  0.9453914141  0.0850642387  0.8971354167  0.1064134130  0.9270833333  0.1174129587  0.8541666667  0.1649193561  5            
+0.9843750000  0.0262190928  0.9482758621  0.0347324931  0.4265689300  0.2683272211  0.4348958333  0.2400420563  0.9498106061  0.0810271313  0.8971354167  0.1003411218  0.9272959184  0.1183720878  0.8619791667  0.1541031499  20           
+0.9827860169  0.0249786827  0.9493534483  0.0292293191  0.4255401235  0.2704972598  0.4203125000  0.2540456212  0.9513888889  0.0787268214  0.8932291667  0.0893258142  0.9270833333  0.1204258407  0.8680555556  0.1483424892  50           
+0.9830508475  0.0237286011  0.9525862069  0.0288486908  0.4188528807  0.2761774029  0.4223958333  0.2580390574  0.9501262626  0.0774143127  0.9010416667  0.0809308706  0.9260204082  0.1187851367  0.8645833333  0.1354287531  100          
+0.9523305085  0.0387687500  0.9396551724  0.0381455318  0.3912037037  0.2887776138  0.4020833333  0.2627625087  0.9324494949  0.0804726437  0.8802083333  0.0935306795  0.9134778912  0.1082071018  0.8602430556  0.1200137625  -1           

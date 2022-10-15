@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\begin{document}
+\section{Full DomainBed results}
+% Total records: 72
+
+\subsection{Model selection: training-domain validation set}
+test_env: 2
+{'val_acc': 0.9133441091954023, 'test_acc': 0.4962121212121212}
+test_env: 0
+{'val_acc': 0.8942418981481483, 'test_acc': 0.5429025423728814}
+test_env: 1
+{'val_acc': 0.9062899106002554, 'test_acc': 0.33912037037037035}
+test_env: 2
+{'val_acc': 0.9178739623243933, 'test_acc': 0.476010101010101}
+test_env: 1
+{'val_acc': 0.9037007104086845, 'test_acc': 0.35185185185185186}
+test_env: 2
+{'val_acc': 0.9097042624521072, 'test_acc': 0.5192550505050505}
+test_env: 3
+{'val_acc': 0.9193277059386974, 'test_acc': 0.4141156462585034}
+test_env: 3
+{'val_acc': 0.9166995929118773, 'test_acc': 0.36989795918367346}
+test_env: 1
+{'val_acc': 0.9081507423371648, 'test_acc': 0.33088991769547327}
+test_env: 3
+{'val_acc': 0.9231950431034482, 'test_acc': 0.37648809523809523}
+test_env: 0
+{'val_acc': 0.8935474537037037, 'test_acc': 0.4973516949152542}
+test_env: 0
+{'val_acc': 0.8918402777777779, 'test_acc': 0.4298199152542373}
+
+\subsubsection{TerraIncognita}
+[0.5429025423728814, 0.4973516949152542, 0.4298199152542373]
+[0.33912037037037035, 0.35185185185185186, 0.33088991769547327]
+[0.4962121212121212, 0.476010101010101, 0.5192550505050505]
+[0.4141156462585034, 0.36989795918367346, 0.37648809523809523]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Algorithm}   & \textbf{L100}        & \textbf{L38}         & \textbf{L43}         & \textbf{L46}         & \textbf{Avg}         \\
+\midrule
+ERM_SDViT            & 49.0 $\pm$ 2.7       & 34.1 $\pm$ 0.5       & 49.7 $\pm$ 1.0       & 38.7 $\pm$ 1.1       & 42.9                 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\subsubsection{Averages}
+[0.43363027724786196, 0.43464234502033805, 0.41770619419870325]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lcc}
+\toprule
+\textbf{Algorithm}        & \textbf{TerraIncognita}   & \textbf{Avg}              \\
+\midrule
+ERM_SDViT                 & 42.9 $\pm$ 0.4            & 42.9                      \\
+\bottomrule
+\end{tabular}}
+\end{center}
+\end{document}

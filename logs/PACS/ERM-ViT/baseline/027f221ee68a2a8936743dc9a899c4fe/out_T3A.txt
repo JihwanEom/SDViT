@@ -1,0 +1,131 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_ViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: PACS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0}
+	hparams_seed: 0
+	input_dir: logs/PACS/ERM-ViT/baseline/027f221ee68a2a8936743dc9a899c4fe
+	output_dir: logs/PACS/ERM-ViT/baseline/027f221ee68a2a8936743dc9a899c4fe
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 244401472
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [3]
+	trial_seed: 1
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: False
+	EMA: False
+	EMA_decay: 0.999
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9975594875  0.0070824749  0.9535452323  0.0541930020  0.9946695096  0.0098612763  0.9572649573  0.0423253121  0.9992514970  0.0032233369  0.9940119760  0.0090530014  0.6867048346  0.1784555368  0.6891719745  0.1771889447 
+
+After T3A
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 317, in <module>
+    loader1, loader2, ent = generate_featurelized_loader(loader, featurizer=featurizer, classifier=classifier, batch_size=32)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/scripts/unsupervised_adaptation.py", line 57, in generate_featurelized_loader
+    z = featurizer(x)[-1]
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 327, in forward
+    list_out = self.forward_features(x)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 320, in forward_features
+    x = blk(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 171, in forward
+    x = x + self.drop_path(self.mlp(self.norm2(x)))
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/local_ssd2/jeom/SDViT_T3A/domainbed/visiontransformer.py", line 98, in forward
+    x = self.fc2(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 94, in forward
+    return F.linear(input, self.weight, self.bias)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/functional.py", line 1753, in linear
+    return torch._C._nn.linear(input, weight, bias)
+KeyboardInterrupt
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_ViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: PACS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0}
+	hparams_seed: 0
+	input_dir: logs/PACS/ERM-ViT/baseline/027f221ee68a2a8936743dc9a899c4fe
+	output_dir: logs/PACS/ERM-ViT/baseline/027f221ee68a2a8936743dc9a899c4fe
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 244401472
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [3]
+	trial_seed: 1
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: False
+	EMA: False
+	EMA_decay: 0.999
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9975594875  0.0070824749  0.9535452323  0.0541930020  0.9946695096  0.0098612763  0.9572649573  0.0423253121  0.9992514970  0.0032233369  0.9940119760  0.0090530014  0.6867048346  0.1784555368  0.6891719745  0.1771889447 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9993872549  0.0019070803  0.9583333333  0.0214074175  0.9951508621  0.0035336448  0.9665178571  0.0166923871  0.9984756098  0.0012074847  0.9843750000  0.0059005207  0.6951530612  0.0783588257  0.6992187500  0.0919175639  1            
+0.9987745098  0.0014616458  0.9583333333  0.0172630806  0.9962284483  0.0039987552  0.9687500000  0.0131500443  0.9984756098  0.0010503282  0.9843750000  0.0042253508  0.7117346939  0.0803553568  0.7278645833  0.0865045417  5            
+0.9987745098  0.0013766051  0.9583333333  0.0180797855  0.9962284483  0.0034527002  0.9642857143  0.0137244297  0.9984756098  0.0010614215  0.9843750000  0.0043558699  0.7235331633  0.0849978330  0.7304687500  0.0896545593  20           
+0.9987745098  0.0014148243  0.9583333333  0.0142479885  0.9962284483  0.0031480166  0.9687500000  0.0139999214  0.9984756098  0.0010923429  0.9843750000  0.0030441526  0.7330994898  0.0900326017  0.7265625000  0.0861176563  50           
+0.9987745098  0.0014755787  0.9557291667  0.0131987284  0.9962284483  0.0028688781  0.9642857143  0.0121721637  0.9992378049  0.0010181168  0.9843750000  0.0030527518  0.7362882653  0.0937054079  0.7187500000  0.0817369719  100          
+0.9987745098  0.0014852276  0.9583333333  0.0149826074  0.9962284483  0.0029909302  0.9642857143  0.0140188206  0.9992378049  0.0010688212  0.9843750000  0.0045246025  0.6999362245  0.0870027435  0.6861979167  0.0592326200  -1           

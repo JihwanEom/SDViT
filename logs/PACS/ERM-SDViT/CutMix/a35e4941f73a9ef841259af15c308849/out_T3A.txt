@@ -1,0 +1,56 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_SDViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: PACS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"CutMix":"True"}
+	hparams_seed: 0
+	input_dir: logs/PACS/ERM-SDViT/CutMix/a35e4941f73a9ef841259af15c308849
+	output_dir: logs/PACS/ERM-SDViT/CutMix/a35e4941f73a9ef841259af15c308849
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 1168423889
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [3]
+	trial_seed: 1
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: False
+	EMA_decay: 0.999
+	KL_Div_Temperature: 3.0
+	RB_loss_weight: 0.5
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+1.0000000000  0.2709693095  0.9584352078  0.3265772822  1.0000000000  0.2695742558  0.9764957265  0.3102786256  1.0000000000  0.2355600988  0.9970059880  0.2440698361  0.7646310433  0.5573829142  0.7324840764  0.5698483461 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+1.0000000000  0.0002472847  0.9635416667  0.0138468572  0.9989224138  0.0005156019  0.9776785714  0.0136034780  1.0000000000  0.0000698304  0.9968750000  0.0018582483  0.7656250000  0.0757483368  0.7356770833  0.0883009721  1            
+1.0000000000  0.0001474478  0.9635416667  0.0136341631  0.9989224138  0.0004518208  0.9776785714  0.0138396019  1.0000000000  0.0000426672  0.9968750000  0.0013022679  0.7662627551  0.0725236744  0.7304687500  0.0804331973  5            
+1.0000000000  0.0001291090  0.9635416667  0.0116288186  0.9989224138  0.0004513012  0.9799107143  0.0121703083  1.0000000000  0.0000349989  0.9968750000  0.0010940273  0.7665816327  0.0728318783  0.7317708333  0.0828275940  20           
+1.0000000000  0.0001230500  0.9635416667  0.0114503486  0.9989224138  0.0004457303  0.9799107143  0.0113100455  1.0000000000  0.0000323702  0.9968750000  0.0007693948  0.7688137755  0.0735791554  0.7356770833  0.0826137741  50           
+1.0000000000  0.0001194615  0.9635416667  0.0106219564  0.9989224138  0.0004424509  0.9799107143  0.0110894400  1.0000000000  0.0000309870  0.9968750000  0.0007691923  0.7691326531  0.0758702925  0.7343750000  0.0858215600  100          
+1.0000000000  0.0001138823  0.9635416667  0.0120677812  0.9978448276  0.0023752667  0.9776785714  0.0130215416  1.0000000000  0.0000320222  0.9968750000  0.0010512989  0.7595663265  0.0881452273  0.7278645833  0.0927270117  -1           

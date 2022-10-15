@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\begin{document}
+\section{Full DomainBed results}
+% Total records: 72
+
+\subsection{Model selection: training-domain validation set}
+test_env: 3
+{'val_acc': 0.8609375, 'test_acc': 0.78125}
+test_env: 1
+{'val_acc': 0.9112103174603176, 'test_acc': 0.671875}
+test_env: 2
+{'val_acc': 0.8785962301587302, 'test_acc': 0.8197408536585366}
+test_env: 3
+{'val_acc': 0.87109375, 'test_acc': 0.8058035714285714}
+test_env: 0
+{'val_acc': 0.8335193452380952, 'test_acc': 0.9928571428571429}
+test_env: 3
+{'val_acc': 0.8680989583333334, 'test_acc': 0.8039434523809523}
+test_env: 2
+{'val_acc': 0.8816964285714285, 'test_acc': 0.796875}
+test_env: 2
+{'val_acc': 0.8868117559523809, 'test_acc': 0.7877286585365854}
+test_env: 0
+{'val_acc': 0.8160280257936506, 'test_acc': 0.9696428571428571}
+test_env: 0
+{'val_acc': 0.8175719246031746, 'test_acc': 0.98125}
+test_env: 1
+{'val_acc': 0.9109747023809524, 'test_acc': 0.662405303030303}
+test_env: 1
+{'val_acc': 0.8994295634920636, 'test_acc': 0.6628787878787878}
+
+\subsubsection{VLCS}
+[0.9928571428571429, 0.9696428571428571, 0.98125]
+[0.671875, 0.662405303030303, 0.6628787878787878]
+[0.8197408536585366, 0.796875, 0.7877286585365854]
+[0.78125, 0.8058035714285714, 0.8039434523809523]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Algorithm}   & \textbf{C}           & \textbf{L}           & \textbf{S}           & \textbf{V}           & \textbf{Avg}         \\
+\midrule
+ERM_SDViT            & 98.1 $\pm$ 0.5       & 66.6 $\pm$ 0.3       & 80.1 $\pm$ 0.8       & 79.7 $\pm$ 0.6       & 81.1                 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\subsubsection{Averages}
+[0.8083781246700454, 0.8134858630952382, 0.8121986689631506]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lcc}
+\toprule
+\textbf{Algorithm}        & \textbf{VLCS}             & \textbf{Avg}              \\
+\midrule
+ERM_SDViT                 & 81.1 $\pm$ 0.1            & 81.1                      \\
+\bottomrule
+\end{tabular}}
+\end{center}
+\end{document}

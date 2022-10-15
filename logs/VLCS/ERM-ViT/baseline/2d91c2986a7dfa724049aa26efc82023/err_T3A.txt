@@ -1,0 +1,225 @@
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 276, in <module>
+    algorithm.network = DataParallelPassthrough(algorithm.student)
+NameError: name 'DataParallelPassthrough' is not defined
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 276, in <module>
+    algorithm.network = DataParallelPassthrough(algorithm.student)
+NameError: name 'DataParallelPassthrough' is not defined
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 289, in <module>
+    algorithm.load_state_dict(algorithm_dict)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1223, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for ERM_ViT:
+	Missing key(s) in state_dict: "network.module.cls_token", "network.module.pos_embed", "network.module.patch_embed.proj.weight", "network.module.patch_embed.proj.bias", "network.module.blocks.0.norm1.weight", "network.module.blocks.0.norm1.bias", "network.module.blocks.0.attn.qkv.weight", "network.module.blocks.0.attn.qkv.bias", "network.module.blocks.0.attn.proj.weight", "network.module.blocks.0.attn.proj.bias", "network.module.blocks.0.norm2.weight", "network.module.blocks.0.norm2.bias", "network.module.blocks.0.mlp.fc1.weight", "network.module.blocks.0.mlp.fc1.bias", "network.module.blocks.0.mlp.fc2.weight", "network.module.blocks.0.mlp.fc2.bias", "network.module.blocks.1.norm1.weight", "network.module.blocks.1.norm1.bias", "network.module.blocks.1.attn.qkv.weight", "network.module.blocks.1.attn.qkv.bias", "network.module.blocks.1.attn.proj.weight", "network.module.blocks.1.attn.proj.bias", "network.module.blocks.1.norm2.weight", "network.module.blocks.1.norm2.bias", "network.module.blocks.1.mlp.fc1.weight", "network.module.blocks.1.mlp.fc1.bias", "network.module.blocks.1.mlp.fc2.weight", "network.module.blocks.1.mlp.fc2.bias", "network.module.blocks.2.norm1.weight", "network.module.blocks.2.norm1.bias", "network.module.blocks.2.attn.qkv.weight", "network.module.blocks.2.attn.qkv.bias", "network.module.blocks.2.attn.proj.weight", "network.module.blocks.2.attn.proj.bias", "network.module.blocks.2.norm2.weight", "network.module.blocks.2.norm2.bias", "network.module.blocks.2.mlp.fc1.weight", "network.module.blocks.2.mlp.fc1.bias", "network.module.blocks.2.mlp.fc2.weight", "network.module.blocks.2.mlp.fc2.bias", "network.module.blocks.3.norm1.weight", "network.module.blocks.3.norm1.bias", "network.module.blocks.3.attn.qkv.weight", "network.module.blocks.3.attn.qkv.bias", "network.module.blocks.3.attn.proj.weight", "network.module.blocks.3.attn.proj.bias", "network.module.blocks.3.norm2.weight", "network.module.blocks.3.norm2.bias", "network.module.blocks.3.mlp.fc1.weight", "network.module.blocks.3.mlp.fc1.bias", "network.module.blocks.3.mlp.fc2.weight", "network.module.blocks.3.mlp.fc2.bias", "network.module.blocks.4.norm1.weight", "network.module.blocks.4.norm1.bias", "network.module.blocks.4.attn.qkv.weight", "network.module.blocks.4.attn.qkv.bias", "network.module.blocks.4.attn.proj.weight", "network.module.blocks.4.attn.proj.bias", "network.module.blocks.4.norm2.weight", "network.module.blocks.4.norm2.bias", "network.module.blocks.4.mlp.fc1.weight", "network.module.blocks.4.mlp.fc1.bias", "network.module.blocks.4.mlp.fc2.weight", "network.module.blocks.4.mlp.fc2.bias", "network.module.blocks.5.norm1.weight", "network.module.blocks.5.norm1.bias", "network.module.blocks.5.attn.qkv.weight", "network.module.blocks.5.attn.qkv.bias", "network.module.blocks.5.attn.proj.weight", "network.module.blocks.5.attn.proj.bias", "network.module.blocks.5.norm2.weight", "network.module.blocks.5.norm2.bias", "network.module.blocks.5.mlp.fc1.weight", "network.module.blocks.5.mlp.fc1.bias", "network.module.blocks.5.mlp.fc2.weight", "network.module.blocks.5.mlp.fc2.bias", "network.module.blocks.6.norm1.weight", "network.module.blocks.6.norm1.bias", "network.module.blocks.6.attn.qkv.weight", "network.module.blocks.6.attn.qkv.bias", "network.module.blocks.6.attn.proj.weight", "network.module.blocks.6.attn.proj.bias", "network.module.blocks.6.norm2.weight", "network.module.blocks.6.norm2.bias", "network.module.blocks.6.mlp.fc1.weight", "network.module.blocks.6.mlp.fc1.bias", "network.module.blocks.6.mlp.fc2.weight", "network.module.blocks.6.mlp.fc2.bias", "network.module.blocks.7.norm1.weight", "network.module.blocks.7.norm1.bias", "network.module.blocks.7.attn.qkv.weight", "network.module.blocks.7.attn.qkv.bias", "network.module.blocks.7.attn.proj.weight", "network.module.blocks.7.attn.proj.bias", "network.module.blocks.7.norm2.weight", "network.module.blocks.7.norm2.bias", "network.module.blocks.7.mlp.fc1.weight", "network.module.blocks.7.mlp.fc1.bias", "network.module.blocks.7.mlp.fc2.weight", "network.module.blocks.7.mlp.fc2.bias", "network.module.blocks.8.norm1.weight", "network.module.blocks.8.norm1.bias", "network.module.blocks.8.attn.qkv.weight", "network.module.blocks.8.attn.qkv.bias", "network.module.blocks.8.attn.proj.weight", "network.module.blocks.8.attn.proj.bias", "network.module.blocks.8.norm2.weight", "network.module.blocks.8.norm2.bias", "network.module.blocks.8.mlp.fc1.weight", "network.module.blocks.8.mlp.fc1.bias", "network.module.blocks.8.mlp.fc2.weight", "network.module.blocks.8.mlp.fc2.bias", "network.module.blocks.9.norm1.weight", "network.module.blocks.9.norm1.bias", "network.module.blocks.9.attn.qkv.weight", "network.module.blocks.9.attn.qkv.bias", "network.module.blocks.9.attn.proj.weight", "network.module.blocks.9.attn.proj.bias", "network.module.blocks.9.norm2.weight", "network.module.blocks.9.norm2.bias", "network.module.blocks.9.mlp.fc1.weight", "network.module.blocks.9.mlp.fc1.bias", "network.module.blocks.9.mlp.fc2.weight", "network.module.blocks.9.mlp.fc2.bias", "network.module.blocks.10.norm1.weight", "network.module.blocks.10.norm1.bias", "network.module.blocks.10.attn.qkv.weight", "network.module.blocks.10.attn.qkv.bias", "network.module.blocks.10.attn.proj.weight", "network.module.blocks.10.attn.proj.bias", "network.module.blocks.10.norm2.weight", "network.module.blocks.10.norm2.bias", "network.module.blocks.10.mlp.fc1.weight", "network.module.blocks.10.mlp.fc1.bias", "network.module.blocks.10.mlp.fc2.weight", "network.module.blocks.10.mlp.fc2.bias", "network.module.blocks.11.norm1.weight", "network.module.blocks.11.norm1.bias", "network.module.blocks.11.attn.qkv.weight", "network.module.blocks.11.attn.qkv.bias", "network.module.blocks.11.attn.proj.weight", "network.module.blocks.11.attn.proj.bias", "network.module.blocks.11.norm2.weight", "network.module.blocks.11.norm2.bias", "network.module.blocks.11.mlp.fc1.weight", "network.module.blocks.11.mlp.fc1.bias", "network.module.blocks.11.mlp.fc2.weight", "network.module.blocks.11.mlp.fc2.bias", "network.module.norm.weight", "network.module.norm.bias", "network.module.head.weight", "network.module.head.bias". 
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 289, in <module>
+    algorithm.load_state_dict(algorithm_dict)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 289, in <module>
+    algorithm.load_state_dict(algorithm_dict)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 289, in <module>
+    algorithm.load_state_dict(algorithm_dict)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1223, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for ERM_ViT:
+	Missing key(s) in state_dict: "student.module.cls_token", "student.module.pos_embed", "student.module.patch_embed.proj.weight", "student.module.patch_embed.proj.bias", "student.module.blocks.0.norm1.weight", "student.module.blocks.0.norm1.bias", "student.module.blocks.0.attn.qkv.weight", "student.module.blocks.0.attn.qkv.bias", "student.module.blocks.0.attn.proj.weight", "student.module.blocks.0.attn.proj.bias", "student.module.blocks.0.norm2.weight", "student.module.blocks.0.norm2.bias", "student.module.blocks.0.mlp.fc1.weight", "student.module.blocks.0.mlp.fc1.bias", "student.module.blocks.0.mlp.fc2.weight", "student.module.blocks.0.mlp.fc2.bias", "student.module.blocks.1.norm1.weight", "student.module.blocks.1.norm1.bias", "student.module.blocks.1.attn.qkv.weight", "student.module.blocks.1.attn.qkv.bias", "student.module.blocks.1.attn.proj.weight", "student.module.blocks.1.attn.proj.bias", "student.module.blocks.1.norm2.weight", "student.module.blocks.1.norm2.bias", "student.module.blocks.1.mlp.fc1.weight", "student.module.blocks.1.mlp.fc1.bias", "student.module.blocks.1.mlp.fc2.weight", "student.module.blocks.1.mlp.fc2.bias", "student.module.blocks.2.norm1.weight", "student.module.blocks.2.norm1.bias", "student.module.blocks.2.attn.qkv.weight", "student.module.blocks.2.attn.qkv.bias", "student.module.blocks.2.attn.proj.weight", "student.module.blocks.2.attn.proj.bias", "student.module.blocks.2.norm2.weight", "student.module.blocks.2.norm2.bias", "student.module.blocks.2.mlp.fc1.weight", "student.module.blocks.2.mlp.fc1.bias", "student.module.blocks.2.mlp.fc2.weight", "student.module.blocks.2.mlp.fc2.bias", "student.module.blocks.3.norm1.weight", "student.module.blocks.3.norm1.bias", "student.module.blocks.3.attn.qkv.weight", "student.module.blocks.3.attn.qkv.bias", "student.module.blocks.3.attn.proj.weight", "student.module.blocks.3.attn.proj.bias", "student.module.blocks.3.norm2.weight", "student.module.blocks.3.norm2.bias", "student.module.blocks.3.mlp.fc1.weight", "student.module.blocks.3.mlp.fc1.bias", "student.module.blocks.3.mlp.fc2.weight", "student.module.blocks.3.mlp.fc2.bias", "student.module.blocks.4.norm1.weight", "student.module.blocks.4.norm1.bias", "student.module.blocks.4.attn.qkv.weight", "student.module.blocks.4.attn.qkv.bias", "student.module.blocks.4.attn.proj.weight", "student.module.blocks.4.attn.proj.bias", "student.module.blocks.4.norm2.weight", "student.module.blocks.4.norm2.bias", "student.module.blocks.4.mlp.fc1.weight", "student.module.blocks.4.mlp.fc1.bias", "student.module.blocks.4.mlp.fc2.weight", "student.module.blocks.4.mlp.fc2.bias", "student.module.blocks.5.norm1.weight", "student.module.blocks.5.norm1.bias", "student.module.blocks.5.attn.qkv.weight", "student.module.blocks.5.attn.qkv.bias", "student.module.blocks.5.attn.proj.weight", "student.module.blocks.5.attn.proj.bias", "student.module.blocks.5.norm2.weight", "student.module.blocks.5.norm2.bias", "student.module.blocks.5.mlp.fc1.weight", "student.module.blocks.5.mlp.fc1.bias", "student.module.blocks.5.mlp.fc2.weight", "student.module.blocks.5.mlp.fc2.bias", "student.module.blocks.6.norm1.weight", "student.module.blocks.6.norm1.bias", "student.module.blocks.6.attn.qkv.weight", "student.module.blocks.6.attn.qkv.bias", "student.module.blocks.6.attn.proj.weight", "student.module.blocks.6.attn.proj.bias", "student.module.blocks.6.norm2.weight", "student.module.blocks.6.norm2.bias", "student.module.blocks.6.mlp.fc1.weight", "student.module.blocks.6.mlp.fc1.bias", "student.module.blocks.6.mlp.fc2.weight", "student.module.blocks.6.mlp.fc2.bias", "student.module.blocks.7.norm1.weight", "student.module.blocks.7.norm1.bias", "student.module.blocks.7.attn.qkv.weight", "student.module.blocks.7.attn.qkv.bias", "student.module.blocks.7.attn.proj.weight", "student.module.blocks.7.attn.proj.bias", "student.module.blocks.7.norm2.weight", "student.module.blocks.7.norm2.bias", "student.module.blocks.7.mlp.fc1.weight", "student.module.blocks.7.mlp.fc1.bias", "student.module.blocks.7.mlp.fc2.weight", "student.module.blocks.7.mlp.fc2.bias", "student.module.blocks.8.norm1.weight", "student.module.blocks.8.norm1.bias", "student.module.blocks.8.attn.qkv.weight", "student.module.blocks.8.attn.qkv.bias", "student.module.blocks.8.attn.proj.weight", "student.module.blocks.8.attn.proj.bias", "student.module.blocks.8.norm2.weight", "student.module.blocks.8.norm2.bias", "student.module.blocks.8.mlp.fc1.weight", "student.module.blocks.8.mlp.fc1.bias", "student.module.blocks.8.mlp.fc2.weight", "student.module.blocks.8.mlp.fc2.bias", "student.module.blocks.9.norm1.weight", "student.module.blocks.9.norm1.bias", "student.module.blocks.9.attn.qkv.weight", "student.module.blocks.9.attn.qkv.bias", "student.module.blocks.9.attn.proj.weight", "student.module.blocks.9.attn.proj.bias", "student.module.blocks.9.norm2.weight", "student.module.blocks.9.norm2.bias", "student.module.blocks.9.mlp.fc1.weight", "student.module.blocks.9.mlp.fc1.bias", "student.module.blocks.9.mlp.fc2.weight", "student.module.blocks.9.mlp.fc2.bias", "student.module.blocks.10.norm1.weight", "student.module.blocks.10.norm1.bias", "student.module.blocks.10.attn.qkv.weight", "student.module.blocks.10.attn.qkv.bias", "student.module.blocks.10.attn.proj.weight", "student.module.blocks.10.attn.proj.bias", "student.module.blocks.10.norm2.weight", "student.module.blocks.10.norm2.bias", "student.module.blocks.10.mlp.fc1.weight", "student.module.blocks.10.mlp.fc1.bias", "student.module.blocks.10.mlp.fc2.weight", "student.module.blocks.10.mlp.fc2.bias", "student.module.blocks.11.norm1.weight", "student.module.blocks.11.norm1.bias", "student.module.blocks.11.attn.qkv.weight", "student.module.blocks.11.attn.qkv.bias", "student.module.blocks.11.attn.proj.weight", "student.module.blocks.11.attn.proj.bias", "student.module.blocks.11.norm2.weight", "student.module.blocks.11.norm2.bias", "student.module.blocks.11.mlp.fc1.weight", "student.module.blocks.11.mlp.fc1.bias", "student.module.blocks.11.mlp.fc2.weight", "student.module.blocks.11.mlp.fc2.bias", "student.module.norm.weight", "student.module.norm.bias", "student.module.head.weight", "student.module.head.bias". 
+	Unexpected key(s) in state_dict: "student.cls_token", "student.pos_embed", "student.patch_embed.proj.weight", "student.patch_embed.proj.bias", "student.blocks.0.norm1.weight", "student.blocks.0.norm1.bias", "student.blocks.0.attn.qkv.weight", "student.blocks.0.attn.qkv.bias", "student.blocks.0.attn.proj.weight", "student.blocks.0.attn.proj.bias", "student.blocks.0.norm2.weight", "student.blocks.0.norm2.bias", "student.blocks.0.mlp.fc1.weight", "student.blocks.0.mlp.fc1.bias", "student.blocks.0.mlp.fc2.weight", "student.blocks.0.mlp.fc2.bias", "student.blocks.1.norm1.weight", "student.blocks.1.norm1.bias", "student.blocks.1.attn.qkv.weight", "student.blocks.1.attn.qkv.bias", "student.blocks.1.attn.proj.weight", "student.blocks.1.attn.proj.bias", "student.blocks.1.norm2.weight", "student.blocks.1.norm2.bias", "student.blocks.1.mlp.fc1.weight", "student.blocks.1.mlp.fc1.bias", "student.blocks.1.mlp.fc2.weight", "student.blocks.1.mlp.fc2.bias", "student.blocks.2.norm1.weight", "student.blocks.2.norm1.bias", "student.blocks.2.attn.qkv.weight", "student.blocks.2.attn.qkv.bias", "student.blocks.2.attn.proj.weight", "student.blocks.2.attn.proj.bias", "student.blocks.2.norm2.weight", "student.blocks.2.norm2.bias", "student.blocks.2.mlp.fc1.weight", "student.blocks.2.mlp.fc1.bias", "student.blocks.2.mlp.fc2.weight", "student.blocks.2.mlp.fc2.bias", "student.blocks.3.norm1.weight", "student.blocks.3.norm1.bias", "student.blocks.3.attn.qkv.weight", "student.blocks.3.attn.qkv.bias", "student.blocks.3.attn.proj.weight", "student.blocks.3.attn.proj.bias", "student.blocks.3.norm2.weight", "student.blocks.3.norm2.bias", "student.blocks.3.mlp.fc1.weight", "student.blocks.3.mlp.fc1.bias", "student.blocks.3.mlp.fc2.weight", "student.blocks.3.mlp.fc2.bias", "student.blocks.4.norm1.weight", "student.blocks.4.norm1.bias", "student.blocks.4.attn.qkv.weight", "student.blocks.4.attn.qkv.bias", "student.blocks.4.attn.proj.weight", "student.blocks.4.attn.proj.bias", "student.blocks.4.norm2.weight", "student.blocks.4.norm2.bias", "student.blocks.4.mlp.fc1.weight", "student.blocks.4.mlp.fc1.bias", "student.blocks.4.mlp.fc2.weight", "student.blocks.4.mlp.fc2.bias", "student.blocks.5.norm1.weight", "student.blocks.5.norm1.bias", "student.blocks.5.attn.qkv.weight", "student.blocks.5.attn.qkv.bias", "student.blocks.5.attn.proj.weight", "student.blocks.5.attn.proj.bias", "student.blocks.5.norm2.weight", "student.blocks.5.norm2.bias", "student.blocks.5.mlp.fc1.weight", "student.blocks.5.mlp.fc1.bias", "student.blocks.5.mlp.fc2.weight", "student.blocks.5.mlp.fc2.bias", "student.blocks.6.norm1.weight", "student.blocks.6.norm1.bias", "student.blocks.6.attn.qkv.weight", "student.blocks.6.attn.qkv.bias", "student.blocks.6.attn.proj.weight", "student.blocks.6.attn.proj.bias", "student.blocks.6.norm2.weight", "student.blocks.6.norm2.bias", "student.blocks.6.mlp.fc1.weight", "student.blocks.6.mlp.fc1.bias", "student.blocks.6.mlp.fc2.weight", "student.blocks.6.mlp.fc2.bias", "student.blocks.7.norm1.weight", "student.blocks.7.norm1.bias", "student.blocks.7.attn.qkv.weight", "student.blocks.7.attn.qkv.bias", "student.blocks.7.attn.proj.weight", "student.blocks.7.attn.proj.bias", "student.blocks.7.norm2.weight", "student.blocks.7.norm2.bias", "student.blocks.7.mlp.fc1.weight", "student.blocks.7.mlp.fc1.bias", "student.blocks.7.mlp.fc2.weight", "student.blocks.7.mlp.fc2.bias", "student.blocks.8.norm1.weight", "student.blocks.8.norm1.bias", "student.blocks.8.attn.qkv.weight", "student.blocks.8.attn.qkv.bias", "student.blocks.8.attn.proj.weight", "student.blocks.8.attn.proj.bias", "student.blocks.8.norm2.weight", "student.blocks.8.norm2.bias", "student.blocks.8.mlp.fc1.weight", "student.blocks.8.mlp.fc1.bias", "student.blocks.8.mlp.fc2.weight", "student.blocks.8.mlp.fc2.bias", "student.blocks.9.norm1.weight", "student.blocks.9.norm1.bias", "student.blocks.9.attn.qkv.weight", "student.blocks.9.attn.qkv.bias", "student.blocks.9.attn.proj.weight", "student.blocks.9.attn.proj.bias", "student.blocks.9.norm2.weight", "student.blocks.9.norm2.bias", "student.blocks.9.mlp.fc1.weight", "student.blocks.9.mlp.fc1.bias", "student.blocks.9.mlp.fc2.weight", "student.blocks.9.mlp.fc2.bias", "student.blocks.10.norm1.weight", "student.blocks.10.norm1.bias", "student.blocks.10.attn.qkv.weight", "student.blocks.10.attn.qkv.bias", "student.blocks.10.attn.proj.weight", "student.blocks.10.attn.proj.bias", "student.blocks.10.norm2.weight", "student.blocks.10.norm2.bias", "student.blocks.10.mlp.fc1.weight", "student.blocks.10.mlp.fc1.bias", "student.blocks.10.mlp.fc2.weight", "student.blocks.10.mlp.fc2.bias", "student.blocks.11.norm1.weight", "student.blocks.11.norm1.bias", "student.blocks.11.attn.qkv.weight", "student.blocks.11.attn.qkv.bias", "student.blocks.11.attn.proj.weight", "student.blocks.11.attn.proj.bias", "student.blocks.11.norm2.weight", "student.blocks.11.norm2.bias", "student.blocks.11.mlp.fc1.weight", "student.blocks.11.mlp.fc1.bias", "student.blocks.11.mlp.fc2.weight", "student.blocks.11.mlp.fc2.bias", "student.norm.weight", "student.norm.bias", "student.head.weight", "student.head.bias". 
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 302, in <module>
+    acc, ent = accuracy_ent(algorithm, loader, weights, device, adapt=None)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 95, in accuracy_ent
+    p = network(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 201, in _forward_unimplemented
+    raise NotImplementedError
+NotImplementedError
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 302, in <module>
+    acc, ent = accuracy_ent(algorithm, loader, weights, device, adapt=None)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 95, in accuracy_ent
+    p = network(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 201, in _forward_unimplemented
+    raise NotImplementedError
+NotImplementedError
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 303, in <module>
+    acc, ent = accuracy_ent(algorithm, loader, weights, device, adapt=None)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 96, in accuracy_ent
+    p = network(x)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 96, in accuracy_ent
+    p = network(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 312, in <module>
+    acc, ent = accuracy_ent(algorithm, loader, weights, device, adapt=None)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 114, in accuracy_ent
+    if p.size(1) == 1:
+AttributeError: 'list' object has no attribute 'size'
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 302, in <module>
+    acc, ent = accuracy_ent(algorithm, loader, weights, device, adapt=None)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 95, in accuracy_ent
+    p = network(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 201, in _forward_unimplemented
+    raise NotImplementedError
+NotImplementedError
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 308, in <module>
+    acc, ent = accuracy_ent(target_network, loader, weights, device, adapt=None)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 104, in accuracy_ent
+    if p.size(1) == 1:
+AttributeError: 'list' object has no attribute 'size'
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 308, in <module>
+    acc, ent = accuracy_ent(target_network, loader, weights, device, adapt=None)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 104, in accuracy_ent
+    if p.size(1) == 1:
+AttributeError: 'list' object has no attribute 'size'
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 306, in <module>
+    acc, ent = accuracy_ent(target_network, loader, weights, device, adapt=None)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 104, in accuracy_ent
+    if p.size(1) == 1:
+AttributeError: 'list' object has no attribute 'size'
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 306, in <module>
+    acc, ent = accuracy_ent(target_network, loader, weights, device, adapt=None)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 104, in accuracy_ent
+    if p.size(1) == 1:
+AttributeError: 'list' object has no attribute 'size'
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 307, in <module>
+    misc.print_row([results[key] for key in results_keys], colwidth=12)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 307, in <module>
+    misc.print_row([results[key] for key in results_keys], colwidth=12)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 315, in <module>
+    loader1, loader2, ent = generate_featurelized_loader(loader, network=algorithm.featurizer, classifier=algorithm.classifier, batch_size=32)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 947, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'ERM_ViT' object has no attribute 'featurizer'
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 318, in <module>
+    loader1, loader2, ent = generate_featurelized_loader(loader, network=algorithm.student.featurizer, classifier=algorithm.student.classifier, batch_size=32)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 947, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'VisionTransformer' object has no attribute 'featurizer'
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 296, in <module>
+    algorithm.load_state_dict(algorithm_dict)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 296, in <module>
+    algorithm.load_state_dict(algorithm_dict)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/bdb.py", line 88, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/bdb.py", line 113, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+Traceback (most recent call last):
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 296, in <module>
+    
+  File "/local_ssd2/jeom/SDViT/domainbed/scripts/unsupervised_adaptation.py", line 58, in generate_featurelized_loader
+    z = network(x)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/container.py", line 119, in forward
+    input = module(input)
+  File "/nfs/site/home/jeom/miniconda3/envs/dg/lib/python3.8/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+TypeError: forward() takes 1 positional argument but 2 were given

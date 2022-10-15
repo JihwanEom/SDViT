@@ -1,0 +1,13 @@
+Total records: 18
+test_env: 2
+{'val_acc': 0.9764883259121185, 'test_acc': 0.9887724550898204}
+[0.9887724550898204]
+
+-------- Dataset: PACS, model selection method: training-domain validation set
+Algorithm             A                     C                     P                     S                     Avg                  
+ERM_SDViT             X                     X                     98.9 +/- 0.0          X                     X                    
+[0.9887724550898204]
+
+-------- Averages, model selection method: training-domain validation set
+Algorithm                  PACS                       Avg                       
+ERM_SDViT                  98.9 +/- 0.0               98.9                      

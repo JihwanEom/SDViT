@@ -1,0 +1,54 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_ViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: TerraIncognita
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"EMA":"True","CutMix":"True"}
+	hparams_seed: 0
+	input_dir: logs/TerraIncognita/ERM-ViT/EMA_CutMix/7153e9281bfe1b99c06a9d9ec8cfc976
+	output_dir: logs/TerraIncognita/ERM-ViT/EMA_CutMix/7153e9281bfe1b99c06a9d9ec8cfc976
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 1911425495
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [3]
+	trial_seed: 2
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: True
+	EMA_decay: 0.999
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9889269707  0.0545653738  0.9651898734  0.0874109698  0.9653357299  0.1497259715  0.9352850539  0.1901600963  0.9694584383  0.1286775228  0.9231738035  0.1873731217  0.4346717655  0.7693156636  0.4158163265  0.7568450526 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9856991525  0.0217158033  0.9579741379  0.0416997183  0.9462448560  0.0696614097  0.9244791667  0.0820807837  0.9520202020  0.0725272763  0.9062500000  0.1124416231  0.4326105442  0.3864159792  0.3819444444  0.4165949060  1            
+0.9875529661  0.0177646133  0.9644396552  0.0308518519  0.9463734568  0.0694735720  0.9177083333  0.0922524745  0.9523358586  0.0621327438  0.9166666667  0.0917967608  0.4368622449  0.3503527516  0.3897569444  0.4011670376  5            
+0.9883474576  0.0171195138  0.9622844828  0.0272538439  0.9398148148  0.0744555247  0.9067708333  0.0939246043  0.9535984848  0.0598770561  0.9153645833  0.0838848548  0.4392006803  0.3375035545  0.4201388889  0.3551839669  20           
+0.9872881356  0.0182996342  0.9601293103  0.0226554844  0.9292695473  0.0830975549  0.9062500000  0.0869490543  0.9535984848  0.0577900349  0.9010416667  0.0792943879  0.4464285714  0.3134842620  0.4288194444  0.3105809535  50           
+0.9878177966  0.0181963868  0.9644396552  0.0201103548  0.9214248971  0.0835180029  0.9062500000  0.0843868356  0.9523358586  0.0568592993  0.9049479167  0.0799023944  0.4494047619  0.3064588169  0.4236111111  0.3082879376  100          
+0.9626588983  0.0327336622  0.9407327586  0.0409375165  0.9349279835  0.0460999026  0.9145833333  0.0536025989  0.9384469697  0.0661905754  0.8906250000  0.0848531930  0.4568452381  0.2184834730  0.4322916667  0.2081114656  -1           

@@ -1,0 +1,56 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_SDViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: VLCS
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"CutMix":"True"}
+	hparams_seed: 0
+	input_dir: logs/VLCS/ERM-SDViT/CutMix/15f8e9f82353a565c419513eaba2120d
+	output_dir: logs/VLCS/ERM-SDViT/CutMix/15f8e9f82353a565c419513eaba2120d
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 1904416879
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [0]
+	trial_seed: 2
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: False
+	EMA_decay: 0.999
+	KL_Div_Temperature: 3.0
+	RB_loss_weight: 0.5
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9770318021  0.3009781663  0.9823321555  0.3207197931  0.9952941176  0.2500933507  0.7834274953  0.3720917190  0.9984767708  0.2627712658  0.8307926829  0.3732216584  0.9981488338  0.2788228191  0.8637037037  0.3673578861 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9901785714  0.0083393201  0.9960937500  0.0062435068  0.9853219697  0.0664631595  0.7792968750  0.0697865224  0.9939024390  0.0454144751  0.8187500000  0.0518998193  0.9947916667  0.0177604897  0.8630952381  0.0653463081  1            
+0.9875000000  0.0070162898  0.9921875000  0.0020010980  0.9933712121  0.0130475770  0.7929687500  0.0577780918  0.9965701220  0.0092608429  0.8140625000  0.0393049708  0.9959077381  0.0082323351  0.8735119048  0.0456177138  5            
+0.9866071429  0.0070267718  0.9921875000  0.0019961577  0.9943181818  0.0085447337  0.7890625000  0.0479592513  0.9969512195  0.0068541125  0.8171875000  0.0341080565  0.9947916667  0.0070771765  0.8720238095  0.0397038875  20           
+0.9866071429  0.0068963804  0.9921875000  0.0018363071  0.9947916667  0.0086193742  0.7871093750  0.0453979388  0.9973323171  0.0068215459  0.8171875000  0.0318389486  0.9962797619  0.0066354988  0.8705357143  0.0357847227  50           
+0.9866071429  0.0064852134  0.9921875000  0.0017665522  0.9943181818  0.0087387305  0.7890625000  0.0464983035  0.9969512195  0.0066964537  0.8156250000  0.0324077616  0.9962797619  0.0065613094  0.8660714286  0.0342861463  100          
+0.9857142857  0.0082498638  0.9921875000  0.0010589494  0.9820075758  0.0244845264  0.7851562500  0.0505438808  0.9862804878  0.0194854894  0.8109375000  0.0372795901  0.9959077381  0.0066550598  0.8735119048  0.0360034833  -1           

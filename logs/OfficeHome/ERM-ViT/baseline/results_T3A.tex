@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\begin{document}
+\section{Full DomainBed results}
+% Total records: 72
+
+\subsection{Model selection: training-domain validation set}
+test_env: 1
+{'val_acc': 0.8502314814814814, 'test_acc': 0.5923165137614679}
+test_env: 0
+{'val_acc': 0.867283950617284, 'test_acc': 0.6911458333333333}
+test_env: 2
+{'val_acc': 0.8076388888888889, 'test_acc': 0.8029279279279279}
+test_env: 1
+{'val_acc': 0.8607253086419754, 'test_acc': 0.5905963302752294}
+test_env: 1
+{'val_acc': 0.8798611111111111, 'test_acc': 0.5742545871559633}
+test_env: 0
+{'val_acc': 0.8445216049382717, 'test_acc': 0.696875}
+test_env: 3
+{'val_acc': 0.8416666666666668, 'test_acc': 0.8298611111111112}
+test_env: 0
+{'val_acc': 0.8526234567901234, 'test_acc': 0.66875}
+test_env: 2
+{'val_acc': 0.8327160493827162, 'test_acc': 0.8040540540540541}
+test_env: 2
+{'val_acc': 0.8081018518518519, 'test_acc': 0.798704954954955}
+test_env: 3
+{'val_acc': 0.8354938271604938, 'test_acc': 0.828125}
+test_env: 3
+{'val_acc': 0.8487654320987654, 'test_acc': 0.8284143518518519}
+
+\subsubsection{OfficeHome}
+[0.6911458333333333, 0.696875, 0.66875]
+[0.5923165137614679, 0.5905963302752294, 0.5742545871559633]
+[0.8029279279279279, 0.8040540540540541, 0.798704954954955]
+[0.8298611111111112, 0.828125, 0.8284143518518519]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Algorithm}   & \textbf{A}           & \textbf{C}           & \textbf{P}           & \textbf{R}           & \textbf{Avg}         \\
+\midrule
+ERM_ViT              & 68.6 $\pm$ 0.7       & 58.6 $\pm$ 0.5       & 80.2 $\pm$ 0.1       & 82.9 $\pm$ 0.0       & 72.6                 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\subsubsection{Averages}
+[0.721978099085324, 0.7244672065988007, 0.7300611104223489]
+
+\begin{center}
+\adjustbox{max width=\textwidth}{%
+\begin{tabular}{lcc}
+\toprule
+\textbf{Algorithm}        & \textbf{OfficeHome}       & \textbf{Avg}              \\
+\midrule
+ERM_ViT                   & 72.6 $\pm$ 0.2            & 72.6                      \\
+\bottomrule
+\end{tabular}}
+\end{center}
+\end{document}

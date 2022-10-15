@@ -1,0 +1,54 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_ViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: TerraIncognita
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0,"EMA":"True","CutMix":"True"}
+	hparams_seed: 0
+	input_dir: logs/TerraIncognita/ERM-ViT/EMA_CutMix/fb917072f20b85e1508229181b2660c5
+	output_dir: logs/TerraIncognita/ERM-ViT/EMA_CutMix/fb917072f20b85e1508229181b2660c5
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 246113801
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [2]
+	trial_seed: 2
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: True
+	EMA: True
+	EMA_decay: 0.999
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9873451094  0.0623997233  0.9599156118  0.0931494054  0.9627680062  0.1598200967  0.9404211608  0.1938991504  0.5758816121  0.6491101303  0.5554156171  0.6586313848  0.9462502656  0.2324508346  0.8860544218  0.2818889480 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9843750000  0.0256656484  0.9515086207  0.0519511902  0.9407150206  0.0615075410  0.9213541667  0.0835095482  0.5467171717  0.3393172300  0.4960937500  0.3898452154  0.9221938776  0.1406909759  0.8723958333  0.1761090339  1            
+0.9835805085  0.0224250728  0.9504310345  0.0456420335  0.9465020576  0.0598087023  0.9119791667  0.0892378583  0.5410353535  0.3253277576  0.5260416667  0.3357277072  0.9264455782  0.1281979782  0.8732638889  0.1522304498  5            
+0.9830508475  0.0219807325  0.9558189655  0.0405631810  0.9472736626  0.0680633475  0.9010416667  0.0965643032  0.5394570707  0.3390492782  0.5299479167  0.2827350547  0.9279336735  0.1226722827  0.8680555556  0.1466959855  20           
+0.9833156780  0.0214587611  0.9558189655  0.0368889054  0.9412294239  0.0791125888  0.9010416667  0.0943793781  0.5410353535  0.3260368356  0.5312500000  0.2584510494  0.9292091837  0.1204883240  0.8715277778  0.1344090128  50           
+0.9830508475  0.0211472766  0.9558189655  0.0312885270  0.9371141975  0.0831822629  0.9026041667  0.0916139814  0.5445075758  0.3049942515  0.5455729167  0.2578019382  0.9262329932  0.1152121676  0.8663194444  0.1172285841  100          
+0.9594809322  0.0326066739  0.9331896552  0.0462890760  0.9300411523  0.0482131458  0.9026041667  0.0604235450  0.5615530303  0.2314668108  0.5351562500  0.2286454064  0.9134778912  0.0963942812  0.8680555556  0.1007116293  -1           

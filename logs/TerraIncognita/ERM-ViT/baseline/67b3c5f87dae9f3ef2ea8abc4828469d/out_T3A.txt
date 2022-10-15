@@ -1,0 +1,54 @@
+Environment:
+	Python: 3.8.13
+	PyTorch: 1.8.1+cu111
+	Torchvision: 0.9.1+cu111
+	CUDA: 11.1
+	CUDNN: 8005
+	NumPy: 1.23.3
+	PIL: 9.2.0
+Args:
+	adapt_algorithm: T3A
+	algorithm: ERM_ViT
+	checkpoint_freq: None
+	data_dir: ./domainbed/data/
+	dataset: TerraIncognita
+	holdout_fraction: 0.2
+	hparams: {"backbone":"DeitSmall","batch_size":32,"lr":5e-05,"resnet_dropout":0.0,"weight_decay":0.0}
+	hparams_seed: 0
+	input_dir: logs/TerraIncognita/ERM-ViT/baseline/67b3c5f87dae9f3ef2ea8abc4828469d
+	output_dir: logs/TerraIncognita/ERM-ViT/baseline/67b3c5f87dae9f3ef2ea8abc4828469d
+	save_best_model: True
+	save_model_every_checkpoint: False
+	seed: 1583344526
+	skip_model_save: False
+	steps: None
+	task: domain_generalization
+	test_batch_size: 32
+	test_envs: [2]
+	trial_seed: 1
+	uda_holdout_fraction: 0
+HParams:
+	CutMix: False
+	EMA: False
+	EMA_decay: 0.999
+	backbone: DeitSmall
+	batch_size: 32
+	class_balanced: False
+	data_augmentation: True
+	lr: 5e-05
+	nonlinear_classifier: False
+	resnet18: False
+	resnet_dropout: 0.0
+	weight_decay: 0.0
+Base model's results
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent 
+0.9831268125  0.0517118967  0.9620253165  0.0627775686  0.9634099371  0.1237596633  0.9347714432  0.1598501193  0.5062972292  0.5691620670  0.5277078086  0.5645829688  0.9400892288  0.1657160594  0.8954081633  0.2263536534 
+
+After T3A
+env0_in_acc   env0_in_ent   env0_out_acc  env0_out_ent  env1_in_acc   env1_in_ent   env1_out_acc  env1_out_ent  env2_in_acc   env2_in_ent   env2_out_acc  env2_out_ent  env3_in_acc   env3_in_ent   env3_out_acc  env3_out_ent  filter_K     
+0.9822563559  0.0236471448  0.9515086207  0.0443570907  0.9508744856  0.0707174440  0.9229166667  0.1024772976  0.4775883838  0.3418241462  0.5000000000  0.2738517728  0.9221938776  0.1029420156  0.8723958333  0.1390111120  1            
+0.9827860169  0.0193768043  0.9558189655  0.0354606737  0.9558899177  0.0597605722  0.9281250000  0.0894734019  0.4905303030  0.3083293963  0.4973958333  0.2732229115  0.9275085034  0.0971561962  0.8802083333  0.1245662328  5            
+0.9817266949  0.0209551114  0.9558189655  0.0334375808  0.9520318930  0.0652278326  0.9192708333  0.0902808231  0.4608585859  0.3004322815  0.4635416667  0.2569831088  0.9251700680  0.0944687140  0.8862847222  0.1131393023  20           
+0.9827860169  0.0210713089  0.9568965517  0.0290454106  0.9462448560  0.0727163522  0.9109375000  0.0921677053  0.4520202020  0.2878007376  0.4791666667  0.2516899298  0.9247448980  0.0918214046  0.8802083333  0.1074531839  50           
+0.9835805085  0.0203108382  0.9558189655  0.0249408402  0.9423868313  0.0811074102  0.9151041667  0.0853221395  0.4517045455  0.2693663779  0.5013020833  0.2438498257  0.9243197279  0.0907642863  0.8767361111  0.0969444642  100          
+0.9581567797  0.0364751207  0.9353448276  0.0429910610  0.9412294239  0.0499957081  0.9250000000  0.0484937779  0.4933712121  0.2277724844  0.5169270833  0.2214106501  0.9145408163  0.0864069537  0.8706597222  0.0997374256  -1           
