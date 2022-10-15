@@ -1,5 +1,5 @@
-backbone=(CVTSmall)
-datasets=(PACS)
+backbone=(DeitSmall)
+datasets=(PACS VLCS OfficeHome TerraIncognita)
 # backbone=(DeitSmall CVTSmall T2T14)
 # datasets=(PACS VLCS OfficeHome TerraIncognita)
 for dataset in ${datasets[@]}
