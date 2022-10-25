@@ -174,8 +174,11 @@ class T2T_ViT(nn.Module):
 
     def forward(self, x):
         list_out = self.forward_features(x)
-        x = [self.head(x) for x in list_out]
-        return x
+        if hasattr(self, 'head'):
+            x = [self.head(x) for x in list_out]
+            return x
+        else:
+            return list_out
  
 
 class T2T_ViT_RB(nn.Module):

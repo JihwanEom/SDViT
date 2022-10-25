@@ -632,10 +632,11 @@ class ConvolutionalVisionTransformer(nn.Module):
         return outputs
 
     def forward(self, x,return_feat=False):
-        
-
         outputs = self.forward_features(x)
-        x = [self.head(out) for out in outputs]
+        if hasattr(self, 'head'):
+            x = [self.head(out) for out in outputs]
+        else:
+            return outputs
         if(return_feat):
             return x[-1],outputs[-1]
         return x
